@@ -1,0 +1,134 @@
+[
+  {
+    "id": "gram_gen_01",
+    "typ": "mc",
+    "frage": "Welche Präposition ist im Satz „Ich fahre ___ Zug nach Berlin.“ korrekt?",
+    "optionen": ["mit dem", "mit den", "mit der", "mit das"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "„Mit“ regiert Dativ: „mit dem Zug“. „Mit den“ wäre Plural, „mit der“ feminin, „mit das“ falscher Kasus.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "gram_gen_02",
+    "typ": "mc",
+    "frage": "Welche Form ist im Satz „Das Buch liegt ___ Tisch.“ korrekt (Position, keine Richtung)?",
+    "optionen": ["auf den", "auf dem", "auf der", "auf das"],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Bei Position (Wo?) steht Dativ: „auf dem Tisch“. „Auf den“ wäre Richtung (Wohin?) mit Akkusativ.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "gram_gen_03",
+    "typ": "mc",
+    "frage": "Welche Präposition verlangt das Verb „sich erinnern“ im Satz „Er erinnert sich ___ seine Kindheit.“?",
+    "optionen": ["an", "auf", "über", "um"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "„Sich erinnern an“ + Akkusativ ist die feste Verb-Präpositions-Verbindung. „Auf/über/um“ sind typische LLM-Verwechslungen.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "gram_gen_04",
+    "typ": "mc",
+    "frage": "Welcher Kasus folgt auf die Präposition „wegen“ im Satz „Wegen ___ schlechten Wetters bleiben wir zu Hause.“?",
+    "optionen": ["dem", "den", "des", "der"],
+    "antwort": 2,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "„Wegen“ regiert Genitiv: „wegen des schlechten Wetters“. Im Umgangsdeutschen hört man oft Dativ, korrekt ist aber der Genitiv.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "gram_gen_05",
+    "typ": "mc",
+    "frage": "Welches Wort leitet die indirekte Ja/Nein-Frage ein: „Sie fragte, ___ er gestern gekommen sei.“?",
+    "optionen": ["ob", "dass", "wenn", "als"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Indirekte Entscheidungsfragen werden mit „ob“ eingeleitet. „Dass“ wäre eine Aussage, „wenn/als“ sind temporal/konditional.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "gram_gen_06",
+    "typ": "mc",
+    "frage": "Welcher Kasus folgt auf „trotz“ im Satz „Trotz ___ Regens gingen wir spazieren.“?",
+    "optionen": ["dem", "des", "den", "der"],
+    "antwort": 1,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "„Trotz“ regiert standardsprachlich den Genitiv: „trotz des Regens“. Dativ („trotz dem Regen“) ist umgangssprachlich verbreitet, aber nicht Standard.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "gram_gen_07",
+    "typ": "mc",
+    "frage": "Welches Pronomen ist im Satz „Ich habe ___ gestern im Supermarkt gesehen.“ korrekt (gemeint: der Nachbar, maskulin)?",
+    "optionen": ["ihn", "ihm", "ihnen", "er"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "„Jemanden sehen“ regiert Akkusativ: „ich habe ihn gesehen“. „Ihm“ wäre Dativ, „er“ ist Nominativ.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "gram_gen_08",
+    "typ": "open",
+    "frage": "Erkläre den Unterschied zwischen „seit“ und „seid“ und setze das richtige Wort ein: „Wir ___ gestern im Kino gewesen.“",
+    "antwort": "„Seit“ ist eine temporale Präposition (seit gestern, seit 2020). „Seid“ ist die 2. Person Plural von „sein“ (ihr seid, wir seid nicht — wir sind). Im Satz ist „seid“ falsch; korrekt ist „Wir sind gestern im Kino gewesen“ — oder mit seid: „Ihr seid gestern im Kino gewesen.“",
+    "punkte": 3,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Klassische Verwechslung: seit (Zeit) vs. seid (Verbform von sein).",
+    "stichworte": ["seit", "seid", "sein", "Zeit"],
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "gram_gen_09",
+    "typ": "mc",
+    "frage": "Welches Relativpronomen ist korrekt: „Das ist das Haus, ___ ich aufgewachsen bin.“?",
+    "optionen": ["in dem", "in den", "in der", "das"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "„Aufwachsen in“ + Dativ: „in dem Haus“. Der Relativsatz bezieht sich auf „das Haus“ (Neutrum), daher „in dem“.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "gram_gen_10",
+    "typ": "mc",
+    "frage": "Welches Wort ist im Vergleich korrekt: „Er ist größer ___ ich.“?",
+    "optionen": ["als", "wie", "denn", "dann"],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Der Komparativ fordert „als“ (größer als). „Wie“ gehört zum Gleichsetzen (so groß wie). „Denn/dann“ sind Konjunktion bzw. Adverb.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "gram_gen_11",
+    "typ": "mc",
+    "frage": "Welcher Artikel ist korrekt: „Die Anzahl ___ Mitarbeiter ist gestiegen.“?",
+    "optionen": ["der", "den", "die", "des"],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "„Die Anzahl der Mitarbeiter“ — Genitiv Plural. „Des“ wäre Genitiv Singular, „den“ Dativ, „die“ Nominativ.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "gram_gen_12",
+    "typ": "open",
+    "frage": "Korrigiere den Satz: „Nachdem ich gegessen habe, ich ging schlafen.“",
+    "antwort": "Korrekt: „Nachdem ich gegessen hatte, ging ich schlafen.“ Der Nebensatz mit „nachdem“ verlangt Plusquamperfekt (hatte gegessen), und im Hauptsatz steht das finite Verb an Position 2 („ging ich“), nicht „ich ging“.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Zwei Fehler: Tempus im Nebensatz (Plusquamperfekt nach nachdem) und Verbzweitstellung im Hauptsatz.",
+    "stichworte": ["hatte", "ging", "Position", "Plusquamperfekt"],
+    "halluzination_kategorie": "code-bug"
+  }
+]

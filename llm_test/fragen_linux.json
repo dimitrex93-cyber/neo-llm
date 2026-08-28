@@ -1,0 +1,159 @@
+[
+  {
+    "id": "linux_01",
+    "typ": "mc",
+    "frage": "Ein Shell-Befehl war erfolgreich. Welchen Exit-Code (Rückgabewert) gibt er an die Shell zurück?",
+    "optionen": ["0", "1", "2", "255"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Exit-Code 0 bedeutet Erfolg. 1 ist ein allgemeiner Fehler, 2 wird z. B. von bash bei Syntaxfehlern benutzt, 255 liefern viele Programme bei schweren Fehlern (entspricht -1 als unsigned byte).",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "linux_02",
+    "typ": "mc",
+    "frage": "Welche Zugriffsrechte erhält die Datei durch den Befehl `chmod 755 backup.sh`?",
+    "optionen": ["rwxrwxrwx", "rwxr-xr-x", "rwxr--r--", "r-xr-xr-x"],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "755 = 7 (rwx) für den Eigentümer, 5 (r-x) für die Gruppe und 5 (r-x) für andere. 777 wäre rwxrwxrwx, 744 wäre rwxr--r--, 555 wäre r-xr-xr-x.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "linux_03",
+    "typ": "mc",
+    "frage": "Welche Aussage über `grep` ist korrekt?",
+    "optionen": [
+      "`grep -v muster datei` gibt nur die Zeilen aus, die das Muster enthalten",
+      "`grep -i muster datei` ignoriert bei der Suche Groß- und Kleinschreibung",
+      "`grep -r muster datei` durchsucht nur die eine angegebene Datei",
+      "`grep -c muster datei` gibt die Trefferzeilen mit Zeilennummern aus"
+    ],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "-i steht für case-insensitive. -v kehrt die Auswahl um (nur Zeilen ohne Treffer), -r sucht rekursiv, -c zählt lediglich die Trefferzeilen; Zeilennummern liefert -n.",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "linux_04",
+    "typ": "mc",
+    "frage": "Welches Ergebnis hat der Befehl `ln -s /tmp/ziel meinlink` im aktuellen Verzeichnis?",
+    "optionen": [
+      "Es entsteht ein Hardlink namens meinlink auf /tmp/ziel",
+      "Es entsteht ein symbolischer Link namens /tmp/ziel, der auf meinlink zeigt",
+      "Es entsteht ein symbolischer Link namens meinlink, der auf /tmp/ziel zeigt",
+      "Es entsteht eine Kopie von /tmp/ziel unter dem Namen meinlink"
+    ],
+    "antwort": 2,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Die Syntax ist `ln -s ZIEL LINKNAME`: Der erste Parameter ist das Ziel, der zweite der neue Linkname. Nur mit -s entsteht ein symbolischer Link; ohne -s wäre es ein Hardlink.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "linux_05",
+    "typ": "mc",
+    "frage": "Ein Prozess soll sofort und ohne die Möglichkeit aufzuräumen beendet werden. Welche Signalnummer gehört zu SIGKILL?",
+    "optionen": ["15", "9", "2", "1"],
+    "antwort": 1,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "SIGKILL ist Signal 9 und kann weder abgefangen noch ignoriert werden. SIGTERM = 15 (Standard bei kill ohne Option), SIGINT = 2 (Strg+C), SIGHUP = 1 (Verbindungsabbruch).",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "linux_06",
+    "typ": "mc",
+    "frage": "Welcher Befehl erstellt aus dem Verzeichnis `daten` ein mit gzip komprimiertes Archiv `backup.tar.gz`?",
+    "optionen": [
+      "tar -xzf backup.tar.gz daten",
+      "tar -czf backup.tar.gz daten",
+      "tar -cvf backup.tar.gz daten",
+      "tar -tzf backup.tar.gz daten"
+    ],
+    "antwort": 1,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "-c erstellt ein Archiv (create), -z komprimiert mit gzip, -f gibt den Dateinamen an. -x extrahiert, -t listet den Inhalt, -v wäre nur verbose.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "linux_07",
+    "typ": "mc",
+    "frage": "Welche Aussage über Cron (crontab) ist korrekt?",
+    "optionen": [
+      "Der Eintrag `0 2 * * *` führt den Job jeden Tag um 02:00 Uhr aus",
+      "Der Eintrag `* * * * *` führt den Job nur einmal pro Stunde aus",
+      "Eine Cron-Zeile darf höchstens 4 Zeitfelder haben",
+      "Der Minutenwert in der crontab darf von 1 bis 60 reichen"
+    ],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Eine crontab-Zeile hat 5 Felder: Minute Stunde Tag Monat Wochentag. `0 2 * * *` = täglich um 02:00 Uhr. `* * * * *` läuft jede Minute, Minuten sind 0–59 (Stunden 0–23).",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "linux_08",
+    "typ": "mc",
+    "frage": "Welche Aussage über `find` ist FALSCH?",
+    "optionen": [
+      "`find . -name \"*.log\"` findet im aktuellen Verzeichnisbaum alle Dateien mit der Endung .log",
+      "`find /etc -type d` listet ausschließlich Verzeichnisse unter /etc auf",
+      "`find . -mtime 1` findet Dateien, deren letzte Änderung genau 1 Minute zurückliegt",
+      "`find . -exec rm {} \\;` führt für jede gefundene Datei den Befehl rm aus"
+    ],
+    "antwort": 2,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "-mtime rechnet in Tagen (24-Stunden-Perioden): -mtime 1 bedeutet Änderung vor 1–2 Tagen. Für Minuten gibt es -mmin. Alle übrigen Aussagen sind korrekt.",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "linux_09",
+    "typ": "open",
+    "frage": "Du hast die Datei `backup.tar.gz`. Wie extrahierst du ihren gesamten Inhalt vollständig in das aktuelle Verzeichnis? Nenne den vollständigen Befehl und erkläre kurz, wofür jede Option steht.",
+    "antwort": "tar -xzf backup.tar.gz — -x extrahiert (extract), -z dekomprimiert das gzip-komprimierte Archiv, -f gibt den Dateinamen des Archivs an. -v wäre optional (verbose, listet die Dateien aus).",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Für .tar.gz sind die drei Flags -x (extract), -z (gzip) und -f (file) erforderlich. Ein fehlendes -z würde ohne vorheriges gunzip fehlschlagen, ein fehlendes -f lässt tar auf stdin/tape zurückfallen.",
+    "stichworte": ["tar", "-xzf", "extrahieren", "gzip", "backup.tar.gz"],
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "linux_10",
+    "typ": "open",
+    "frage": "Ein Backup-Job soll täglich um 23:45 Uhr laufen. In der crontab steht: `23 45 * * * /opt/backup.sh`. Was ist der Fehler, und wann wird der Job tatsächlich ausgeführt?",
+    "antwort": "Die ersten beiden Felder sind vertauscht: `23 45 * * *` bedeutet Minute 23, Stunde 45 — Stunde 45 ist ungültig (erlaubt sind 0–23), daher wird der Job nie ausgeführt. Korrekt wäre `45 23 * * * /opt/backup.sh` (Minute 45, Stunde 23 = 23:45 Uhr).",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Crontab-Reihenfolge: Minute Stunde Tag Monat Wochentag. Werden Minute und Stunde vertauscht, entsteht eine ungültige Stunde (45) und der Job läuft nie — ein klassischer, schwer zu findender Bug.",
+    "stichworte": ["crontab", "Minute", "Stunde", "vertauscht", "45", "23", "ungültig"],
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "linux_11",
+    "typ": "open",
+    "frage": "Jemand behauptet: „`kill -9` und `kill` ohne Optionen sind gleichwertig — beide beenden einen Prozess sofort und unabfangbar.“ Erkläre, warum diese Aussage falsch ist, und beschreibe den Unterschied.",
+    "antwort": "Die Aussage ist falsch: `kill` ohne Optionen sendet SIGTERM (Signal 15), das der Prozess abfangen und ignorieren kann, um z. B. noch aufzuräumen. `kill -9` sendet SIGKILL (Signal 9), das weder abgefangen noch ignoriert werden kann und vom Kernel sofort durchgesetzt wird. Nur SIGKILL ist unabfangbar.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "SIGTERM fordert ein sauberes Beenden an (Standardverhalten von kill), SIGKILL bricht den Prozess sofort ab. Ein Prozess kann SIGTERM behandeln, SIGKILL nicht — daher ist die Gleichsetzung falsch.",
+    "stichworte": ["SIGTERM", "15", "SIGKILL", "9", "abfangbar", "kill"],
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "linux_12",
+    "typ": "open",
+    "frage": "Der Befehl `find . -name \"*.bak\" -exec rm {} ;` soll alle .bak-Dateien löschen, schlägt aber fehl. Was ist der Fehler, und wie lautet die korrigierte Version?",
+    "antwort": "Das Semikolon muss vor der Shell geschützt werden: `-exec rm {} \\;`. Ohne Backslash interpretiert die Shell das `;` als Befehlsende, find erhält -exec ohne Abschluss und bricht mit einem Fehler ab (z. B. „missing argument to -exec“). Korrekt: `find . -name \"*.bak\" -exec rm {} \\;` (alternativ `-delete`).",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Das `\\;` (oder `';'`) beendet die -exec-Anweisung für find. Ohne das Escaping zerteilt die Shell den Befehl an der Stelle des Semikolons — ein sehr häufiger Fehler bei find.",
+    "stichworte": ["find", "-exec", "Semikolon", "Backslash", "\\;", "escaped"],
+    "halluzination_kategorie": "code-bug"
+  }
+]

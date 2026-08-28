@@ -1,0 +1,154 @@
+[
+  {
+    "id": "netzwerk_01",
+    "typ": "mc",
+    "frage": "Welcher TCP-Port ist der standardmäßige Port für HTTPS (HTTP über TLS)?",
+    "optionen": ["80", "443", "8080", "22"],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "HTTPS nutzt standardmäßig TCP-Port 443. Port 80 ist das unverschlüsselte HTTP, 8080 ein alternativer HTTP-Port für Webserver, 22 ist SSH.",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "netzwerk_02",
+    "typ": "mc",
+    "frage": "Welche der folgenden Aussagen über TCP ist FALSCH?",
+    "optionen": [
+      "TCP ist verbindungsorientiert und baut vor der Datenübertragung einen Handshake auf.",
+      "TCP garantiert die Reihenfolge der übertragenen Daten und bestätigt empfangene Segmente.",
+      "TCP ist ein verbindungsloses, unzuverlässiges Protokoll, das ohne Bestätigungen auskommt.",
+      "TCP führt Flusskontrolle und Staukontrolle (Congestion Control) durch."
+    ],
+    "antwort": 2,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Die dritte Aussage beschreibt UDP, nicht TCP. TCP ist verbindungsorientiert (3-Wege-Handshake), zuverlässig (ACKs, erneutes Senden) und garantiert die Reihenfolge; UDP ist verbindungslos und unzuverlässig.",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "netzwerk_03",
+    "typ": "mc",
+    "frage": "Ist die folgende Aussage korrekt? 'Der HTTP-Statuscode 200 signalisiert, dass die angeforderte Ressource nicht gefunden wurde.'",
+    "optionen": [
+      "Nein — 200 bedeutet 'OK' (erfolgreiche Antwort); für 'Not Found' steht 404.",
+      "Ja — 200 bedeutet 'Not Found'.",
+      "Nein — 200 bedeutet 'Bad Request' (fehlerhafte Anfrage).",
+      "Nein — 200 bedeutet 'Forbidden' (Zugriff verweigert)."
+    ],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "200 OK ist die Standard-Antwort für erfolgreiche Anfragen. 404 Not Found: Ressource existiert nicht; 400 Bad Request: fehlerhafte Anfrage; 403 Forbidden: Zugriff verweigert.",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "netzwerk_04",
+    "typ": "mc",
+    "frage": "Welcher der folgenden IPv4-Bereiche ist ein privater Adressbereich nach RFC 1918?",
+    "optionen": ["10.0.0.0/8", "172.32.0.0/12", "192.88.99.0/24", "224.0.0.0/4"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Privat nach RFC 1918 sind 10.0.0.0/8, 172.16.0.0/12 und 192.168.0.0/16. 172.32.0.0/12 liegt außerhalb von 172.16.0.0/12 und ist nicht privat; 192.88.99.0/24 war der 6to4-Relay-Bereich, 224.0.0.0/4 ist für Multicast reserviert.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "netzwerk_05",
+    "typ": "open",
+    "frage": "In welcher Schicht des OSI-Modells arbeitet das Protokoll TCP, und welche Kernaufgabe hat diese Schicht?",
+    "antwort": "TCP arbeitet in Schicht 4, der Transportschicht (Transport Layer). Ihre Kernaufgabe ist die zuverlässige Ende-zu-Ende-Übertragung zwischen zwei Rechnern: Segmentierung der Daten, Flusskontrolle, Fehlerkontrolle (Bestätigungen, erneutes Senden verlorener Segmente) und Wiederherstellung der Reihenfolge.",
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "TCP wird im TCP/IP-Modell der Transportschicht zugeordnet, was der OSI-Schicht 4 entspricht. Die Schicht darunter (Netzwerkschicht/Schicht 3) übernimmt das Routing (IP), Ethernet arbeitet in Schicht 2.",
+    "stichworte": ["Transportschicht", "Schicht 4", "zuverlässig", "Segmentierung", "Flusskontrolle", "Ende-zu-Ende"],
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "netzwerk_06",
+    "typ": "mc",
+    "frage": "Welche Subnetzmaske gehört zur CIDR-Schreibweise /24?",
+    "optionen": ["255.255.255.0", "255.255.255.128", "255.255.0.0", "255.255.255.240"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "/24 bedeutet 24 gesetzte Bits in der Maske, also 255.255.255.0 (11111111.11111111.11111111.00000000). 255.255.255.128 entspricht /25, 255.255.0.0 ist /16, 255.255.255.240 ist /28.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "netzwerk_07",
+    "typ": "mc",
+    "frage": "Welcher DNS-Record-Typ ordnet einem Hostnamen eine IPv4-Adresse zu?",
+    "optionen": ["A", "AAAA", "MX", "CNAME"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Der A-Record (Address) liefert die IPv4-Adresse zu einem Namen. AAAA liefert IPv6-Adressen (128 Bit), MX benennt den Mailserver einer Domain, CNAME ist ein Alias auf einen anderen Hostnamen.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "netzwerk_08",
+    "typ": "open",
+    "frage": "Ein Kollege behauptet: 'NAT (Network Address Translation) ist dafür zuständig, Hostnamen wie example.com in IP-Adressen aufzulösen.' Ist diese Aussage korrekt? Erkläre kurz, was NAT tatsächlich leistet.",
+    "antwort": "Nein, die Aussage ist falsch. Das Auflösen von Hostnamen in IP-Adressen ist die Aufgabe von DNS. NAT übersetzt dagegen Adressen in den IP-Paketköpfen: Es ersetzt private Adressen (RFC 1918) beim Übergang ins Internet durch öffentliche Adressen (häufig mit Port-Umschreibung, PAT/Masquerading), sodass viele Geräte im privaten Netz über eine einzelne öffentliche Adresse kommunizieren können.",
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Typische Halluzination: NAT mit DNS oder DHCP verwechseln. NAT arbeitet auf der Paketebene (Adress-/Portübersetzung), DHCP vergibt Adressen, DNS löst Namen auf.",
+    "stichworte": ["DNS", "Hostname-Auflösung", "Adressübersetzung", "private Adressen", "öffentliche Adresse", "PAT"],
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "netzwerk_09",
+    "typ": "mc",
+    "frage": "Welche Aussage über folgendes Python-Snippet ist korrekt?\n\ndef nutzbare_hosts(prefix):\n    return 2 ** (32 - prefix) - 1",
+    "optionen": [
+      "Für prefix=24 liefert die Funktion 255; das ist falsch, korrekt wären 254 nutzbare Hosts, weil Netz- und Broadcast-Adresse nicht vergeben werden dürfen.",
+      "Für prefix=24 liefert die Funktion 254; das ist korrekt.",
+      "Für prefix=24 liefert die Funktion 256; das ist korrekt.",
+      "Für prefix=24 liefert die Funktion 255; das ist korrekt, weil nur die Broadcast-Adresse abgezogen wird."
+    ],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Ein /24-Subnetz hat 2^8 = 256 Adressen; davon sind die Netzadresse (.0) und die Broadcast-Adresse (.255) nicht als Hosts nutzbar, also 256 - 2 = 254. Der Code zieht mit '- 1' nur eine Adresse ab und liefert fälschlich 255.",
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "netzwerk_10",
+    "typ": "mc",
+    "frage": "Welche der folgenden Aussagen über IPv6 ist FALSCH?",
+    "optionen": [
+      "Eine IPv6-Adresse ist 128 Bit lang und wird in acht 16-Bit-Blöcken notiert.",
+      "IPv6 verwendet kein ARP; die Adressauflösung übernimmt das Neighbor Discovery Protocol (NDP).",
+      "Zusammenhängende Nullblöcke in einer IPv6-Adresse dürfen einmal mit '::' abgekürzt werden.",
+      "IPv6 kennt keine privaten Adressen — alle IPv6-Adressen sind weltweit eindeutig und öffentlich."
+    ],
+    "antwort": 3,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "IPv6 hat sehr wohl nicht-öffentliche Adressen: Unique Local Addresses (fc00::/7, ULA) und Link-Local-Adressen (fe80::/10). ULA ist das IPv6-Pendant zu den RFC-1918-Bereichen; die übrigen Aussagen sind korrekt (128 Bit, NDP statt ARP, '::'-Abkürzung).",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "netzwerk_11",
+    "typ": "open",
+    "frage": "Im Netz 192.168.10.0/24 sollen Subnetze für je 60 Hosts gebildet werden. Welche Präfixlänge (CIDR) ist die kleinste, die 60 nutzbare Host-Adressen ermöglicht, welche Subnetzmaske gehört dazu, und welche Netz- bzw. Broadcast-Adresse hat das erste dieser Subnetze?",
+    "antwort": "Die kleinste passende Präfixlänge ist /26 mit der Subnetzmaske 255.255.255.192: 2^(32-26) - 2 = 62 nutzbare Hosts (64 Adressen minus Netz- und Broadcast-Adresse). /27 böte nur 30 nutzbare Hosts. Das erste /26-Subnetz innerhalb von 192.168.10.0/24 ist 192.168.10.0/26 mit Netzadresse 192.168.10.0 und Broadcast-Adresse 192.168.10.63 (nutzbar: 192.168.10.1 bis 192.168.10.62).",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Typische Halluzinationen: /27 wählen (nur 30 Hosts), die Maske 255.255.255.224 angeben oder 64 statt 62 nutzbare Hosts nennen. Merke: nutzbare Hosts = 2^(32-Praefix) - 2, Blockgröße = 256 - letzter Oktettwert der Maske (hier 256 - 192 = 64).",
+    "stichworte": ["/26", "255.255.255.192", "62 Hosts", "192.168.10.0", "192.168.10.63", "2^6-2"],
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "netzwerk_12",
+    "typ": "open",
+    "frage": "Das folgende Python-Snippet prüft, ob 192.168.1.255 zum Netz 192.168.1.0/24 gehört:\n\nimport ipaddress\nnetz = ipaddress.ip_network(\"192.168.1.0/24\")\nif ipaddress.ip_address(\"192.168.1.255\") in netz:\n    print(\"Host-Adresse\")\n\nWarum ist die Ausgabe 'Host-Adresse' fachlich falsch, und wie prüft man korrekt, ob eine Adresse als Host nutzbar ist?",
+    "antwort": "192.168.1.255 ist die Broadcast-Adresse des /24-Subnetzes und keine nutzbare Host-Adresse — auch wenn sie zur Adressmenge des Netzes gehört und die 'in'-Prüfung True liefert. Korrekt ist, Netz- und Broadcast-Adresse explizit auszuschließen, z. B.:\n\nip = ipaddress.ip_address(\"192.168.1.255\")\nif ip in netz and ip != netz.network_address and ip != netz.broadcast_address:\n    print(\"Host-Adresse\")\n\nDann wird für 192.168.1.255 nichts ausgegeben; nutzbar sind nur 192.168.1.1 bis 192.168.1.254.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Der subtile Bug: Zugehörigkeit zur Adressmenge des Netzes ('in') wird mit Nutzbarkeit als Host verwechselt. ipaddress stellt network_address und broadcast_address bereit, die man ausschließen muss.",
+    "stichworte": ["Broadcast-Adresse", "192.168.1.255", "network_address", "broadcast_address", "Netzadresse", "Ausschluss"],
+    "halluzination_kategorie": "code-bug"
+  }
+]

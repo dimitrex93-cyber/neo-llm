@@ -1,0 +1,200 @@
+[
+  {
+    "id": "github_01",
+    "typ": "mc",
+    "frage": "Du hast deine Änderungen mit `git add` in den Staging-Bereich gelegt. Welcher Befehl speichert sie jetzt als dauerhafte Momentaufnahme (Commit) im lokalen Repository?",
+    "optionen": [
+      "git commit",
+      "git push",
+      "git save",
+      "git stage"
+    ],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "`git commit` erstellt aus den gestageden Änderungen einen neuen Commit im lokalen Repository. `git push` überträgt vorhandene Commits erst an ein Remote-Repository wie GitHub. `git save` ist kein Git-Befehl, und `git stage` ist nur ein seltener Alias für `git add` – beides erstellt keinen Commit.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "github_02",
+    "typ": "mc",
+    "frage": "Die Datei `config.ini` wird bereits von Git verfolgt (getrackt). Jetzt trägst du sie in `.gitignore` ein. Was passiert beim nächsten `git add .`?",
+    "optionen": [
+      "`config.ini` wird weiterhin getrackt und committet, weil `.gitignore` nur für neue, noch nicht getrackte Dateien gilt",
+      "Git entfernt `config.ini` automatisch aus dem Repository",
+      "`config.ini` wird ab sofort bei allen Commits ignoriert",
+      "Git bricht mit einer Fehlermeldung ab"
+    ],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "`.gitignore` gilt nur für untracked Dateien. Bereits getrackte Dateien ignoriert Git auch nach dem Eintrag weiterhin nicht – sie müssen erst mit `git rm --cached` aus der Versionskontrolle genommen werden.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "github_03",
+    "typ": "mc",
+    "frage": "Wie viele Eltern-Commit(s) hat ein normaler Commit – also weder ein Merge-Commit noch der allererste (Root-)Commit?",
+    "optionen": [
+      "0",
+      "1",
+      "2",
+      "4"
+    ],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Ein normaler Commit hat genau einen Eltern-Commit. Der Root-Commit hat 0 Eltern, ein Merge-Commit hat 2 (bei Octopus-Merges auch mehr). Die Eltern werden im Commit-Objekt als `parent`-Einträge gespeichert.",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "github_04",
+    "typ": "mc",
+    "frage": "Welche Aussage über `git pull` ist korrekt?",
+    "optionen": [
+      "`git pull` holt Änderungen vom Remote-Repository und führt sie mit dem lokalen Branch zusammen",
+      "`git pull` lädt nur Änderungen herunter, wendet sie aber nicht an",
+      "`git pull` sendet lokale Commits an das Remote-Repository",
+      "`git pull` erstellt immer einen neuen Branch"
+    ],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "`git pull` ist standardmäßig `git fetch` + `git merge`: Es holt die Remote-Änderungen und integriert sie in den aktuellen Branch. Das reine Herunterladen ohne Anwenden übernimmt `git fetch`, das Senden eigener Commits übernimmt `git push`.",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "github_05",
+    "typ": "mc",
+    "frage": "Du hast gerade `git commit` ausgeführt und möchtest den Commit rückgängig machen. Die Änderungen sollen im Staging-Bereich (Index) liegen bleiben, das Arbeitsverzeichnis soll unverändert bleiben. Welcher Befehl passt?",
+    "optionen": [
+      "git reset --soft HEAD~1",
+      "git reset --mixed HEAD~1",
+      "git reset --hard HEAD~1",
+      "git revert HEAD"
+    ],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "`git reset --soft HEAD~1` verschiebt nur den Branch-Zeiger einen Commit zurück; Index und Arbeitsverzeichnis bleiben unverändert, die Änderungen sind weiterhin gestaged. `--mixed` (der Standard) setzt zusätzlich den Index zurück, `--hard` verwirft auch die Arbeitsverzeichnis-Änderungen. `git revert HEAD` erstellt dagegen einen neuen Commit.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "github_06",
+    "typ": "mc",
+    "frage": "Was bedeutet der Zustand 'detached HEAD' in Git?",
+    "optionen": [
+      "HEAD zeigt direkt auf einen Commit statt auf einen Branch",
+      "Der aktuelle Branch wurde gelöscht",
+      "Das Remote-Repository ist nicht erreichbar",
+      "Der letzte Commit wurde unwiderruflich gelöscht"
+    ],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Bei 'detached HEAD' zeigt HEAD nicht auf einen Branch-Namen, sondern direkt auf einen Commit (z. B. nach `git checkout <commit>` oder `git checkout <tag>`). Neue Commits in diesem Zustand gehören zu keinem Branch und gehen verloren, wenn man nicht vorher einen Branch erstellt.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "github_07",
+    "typ": "mc",
+    "frage": "Welche Aussage über `git stash` ist FALSCH?",
+    "optionen": [
+      "`git stash` legt uncommittete Änderungen beiseite und macht das Arbeitsverzeichnis wieder sauber",
+      "`git stash pop` stellt die Änderungen wieder her und entfernt den Stash-Eintrag",
+      "`git stash` legt auch Änderungen an bereits getrackten Dateien beiseite",
+      "`git stash` überträgt die Änderungen automatisch an das Remote-Repository"
+    ],
+    "antwort": 3,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "`git stash` arbeitet nur lokal und kommuniziert nie mit einem Remote-Repository. Es legt Änderungen an getrackten Dateien beiseite (untracked Dateien nur mit `-u`). `git stash pop` stellt den obersten Stash-Eintrag wieder her und entfernt ihn dabei aus der Liste.",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "github_08",
+    "typ": "mc",
+    "frage": "Wie lange bleiben Einträge im Reflog (z. B. nach `git reset`) standardmäßig erhalten, bevor Git sie aufräumt?",
+    "optionen": [
+      "7 Tage",
+      "30 Tage",
+      "90 Tage",
+      "365 Tage"
+    ],
+    "antwort": 2,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Standardmäßig gilt `gc.reflogExpire = 90 days` für erreichbare Einträge (für nicht mehr erreichbare Commits sind es 30 Tage). Innerhalb dieses Zeitraums lassen sich „verlorene“ Commits über `git reflog` wiederfinden und zurückholen.",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "github_09",
+    "typ": "open",
+    "frage": "Ein Kollege sagt: „`git merge main` erzeugt eine lineare Commit-Historie, ohne Merge-Commit.“ Stimmt diese Aussage? Korrigiere sie und erkläre den Unterschied zu `git rebase main`.",
+    "antwort": "Die Aussage stimmt nicht. `git merge main` erzeugt einen Merge-Commit, der die beiden Entwicklungslinien zusammenführt – die Historie verzweigt und bleibt nicht linear. Eine lineare Historie ohne Merge-Commit erreicht man mit `git rebase main`: Die eigenen Commits werden auf die Spitze von `main` neu aufgespielt, dabei entstehen neue Commits mit neuen Hashes. Rebase schreibt also die History um, Merge nicht. Auf bereits gepushten Branches ist Rebase deshalb mit Vorsicht zu verwenden.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Merge erzeugt einen Merge-Commit und behält die Branch-Struktur (nicht linear). Rebase spielt die eigenen Commits auf die neue Basis und erzeugt neue Commit-Hashes (linear, aber History wird umgeschrieben).",
+    "stichworte": [
+      "merge",
+      "Merge-Commit",
+      "rebase",
+      "linear",
+      "History umschreiben"
+    ],
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "github_10",
+    "typ": "open",
+    "frage": "Ein Kollege hat einen Commit bereits mit `git push origin feature` veröffentlicht. Jetzt möchte er ihn zurücknehmen und führt `git reset --hard HEAD~1` aus. Danach will er erneut pushen. Erkläre, welcher Fehler hier steckt, welche Folgen er hat und wie es richtig geht.",
+    "antwort": "Der Fehler: `git reset --hard HEAD~1` schreibt die History um, obwohl der Commit bereits per `git push` auf dem Remote liegt. Der anschließende `git push` wird mit „non-fast-forward“ abgelehnt. Ein erzwungener Push (`git push --force`) würde die öffentliche History überschreiben und alle anderen, die den Commit schon gezogen haben, in Konflikte bringen. Richtig ist `git revert HEAD`: Das erstellt einen neuen Commit, der die Änderung rückgängig macht, ohne die History umzuschreiben. `git reset --hard` ist nur vertretbar, wenn der Commit sicher noch nie gepusht wurde – und falls doch erzwungen werden muss, ist `git push --force-with-lease` die sichere Variante.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Reset auf einen bereits gepushten Commit überschreibt die öffentliche History; Revert erzeugt einen kompatiblen Folge-Commit. Force-Push nur mit --force-with-lease als Absicherung.",
+    "stichworte": [
+      "reset --hard",
+      "History umschreiben",
+      "gepusht",
+      "revert",
+      "non-fast-forward",
+      "force-with-lease"
+    ],
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "github_11",
+    "typ": "open",
+    "frage": "Ein Kollege behauptet: „Auf GitHub kann jeder per `git push --force` die History des Default-Branches überschreiben – GitHub blockiert das nicht.“ Bewerte diese Aussage und korrigiere sie.",
+    "antwort": "Die Aussage ist falsch. GitHub blockiert Force-Push auf den Default-Branch standardmäßig; erst wer in den Branch-Protection-Regeln (Rulesets) explizit „Allow force pushes“ erlaubt, macht ihn möglich. Außerdem ist `git push --force` generell riskant: Es überschreibt die History auf dem Remote-Branch und kann die Commits anderer Teammitglieder ersetzen. Sicherer ist `git push --force-with-lease`: Es erzwingt den Push nur, wenn der Remote-Stand noch dem entspricht, den man zuletzt gesehen hat.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "GitHub schützt den Default-Branch standardmäßig vor Force-Push. --force-with-lease prüft vor dem Überschreiben den Remote-Stand und ist die sichere Alternative.",
+    "stichworte": [
+      "force-push",
+      "Default-Branch",
+      "blockiert",
+      "Branch Protection",
+      "force-with-lease"
+    ],
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "github_12",
+    "typ": "open",
+    "frage": "Dieser GitHub-Actions-Workflow soll bei jedem Push die Tests ausführen und nur auf `main` einen Release-Build starten. Finde den Fehler in der Bedingung und korrigiere ihn.\n\n```yaml\nname: CI\non: push\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - name: Tests\n        run: npm test\n      - name: Release-Build\n        if: github.ref = 'refs/heads/main'\n        run: npm run build\n```",
+    "antwort": "Der Fehler steckt im `if`-Ausdruck des Schritts „Release-Build“: `github.ref = 'refs/heads/main'` verwendet ein einzelnes `=`. GitHub-Actions-Expressions kennen keine Zuweisung – Vergleiche brauchen `==`. Korrekt lautet die Zeile: `if: github.ref == 'refs/heads/main'`. Alternativ kann man den Workflow nur für `main` triggern (`on: push: branches: [main]`) und die Bedingung ganz weglassen.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "In GitHub-Actions-Expressions ist `=` kein gültiger Operator, Vergleiche benötigen `==`. Ein ungültiger if-Ausdruck lässt den Job fehlschlagen. Alternativ filtert `on: push: branches: [main]` schon auf Trigger-Ebene.",
+    "stichworte": [
+      "if",
+      "github.ref",
+      "==",
+      "Expression",
+      "Vergleich",
+      "Workflow"
+    ],
+    "halluzination_kategorie": "code-bug"
+  }
+]

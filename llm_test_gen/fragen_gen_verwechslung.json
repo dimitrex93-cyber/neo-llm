@@ -1,0 +1,112 @@
+[
+  {
+    "id": "ver_gen_01",
+    "typ": "mc",
+    "frage": "Welcher Git-Befehl erzeugt einen Merge-Commit mit zwei Eltern, wenn beide Branches divergiert sind?",
+    "optionen": ["git merge", "git rebase", "git cherry-pick", "git reset"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "git merge erzeugt einen Merge-Commit mit zwei Eltern. git rebase schreibt Commits um (lineare Historie), cherry-pick übernimmt einzelne Commits, reset bewegt den Branch-Zeiger.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "ver_gen_02",
+    "typ": "mc",
+    "frage": "Was ist der Unterschied zwischen `cp -r` und `cp -R`?",
+    "optionen": ["Keiner – beide kopieren rekursiv", "-r kopiert nur Ordner, -R nur Dateien", "-r folgt Symlinks, -R nicht", "-R löscht das Ziel vor dem Kopieren"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "-r und -R sind bei GNU cp identisch (rekursiv). Die Unterscheidung existiert nur bei manchen BSD-Tools.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "ver_gen_03",
+    "typ": "mc",
+    "frage": "Welche Aussage über TCP vs. UDP ist korrekt?",
+    "optionen": ["TCP garantiert Zustellung und Reihenfolge, UDP nicht", "UDP garantiert Zustellung, TCP nicht", "Beide garantieren Zustellung", "TCP ist verbindungslos, UDP verbindungsorientiert"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "TCP ist verbindungsorientiert mit Bestätigungen (Zustellung + Reihenfolge), UDP ist verbindungslos und unzuverlässig, dafür schneller.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "ver_gen_04",
+    "typ": "mc",
+    "frage": "In Python: Wann ist `a == b` wahr, aber `a is b` falsch?",
+    "optionen": ["Wenn a und b gleiche Werte, aber verschiedene Objekte haben", "Das ist nie möglich", "Nur bei Strings", "Nur bei Zahlen"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "== vergleicht Werte, is vergleicht Identität (id). Zwei verschiedene Listen mit gleichem Inhalt: == True, is False.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "ver_gen_05",
+    "typ": "mc",
+    "frage": "Was macht `rm` mit einem symbolischen Link?",
+    "optionen": ["Es löscht den Link, nicht das Ziel", "Es löscht das Ziel, nicht den Link", "Es löscht beides", "Es bricht mit einem Fehler ab"],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "rm entfernt den Symlink selbst. Nur rm auf einen Symlink mit folgendem Slash (rm link/) oder rm -r verhält sich anders. Das Ziel bleibt erhalten.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "ver_gen_06",
+    "typ": "mc",
+    "frage": "Was bewirkt `EXPOSE 8080` im Dockerfile?",
+    "optionen": ["Es dokumentiert den Port, veröffentlicht ihn aber nicht", "Es veröffentlicht den Port auf dem Host", "Es öffnet die Firewall", "Es macht nichts"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "EXPOSE ist rein dokumentarisch. Veröffentlicht wird erst mit -p (docker run) oder ports: (compose).",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "ver_gen_07",
+    "typ": "mc",
+    "frage": "Welcher Befehl zeigt NUR die laufenden Docker-Container?",
+    "optionen": ["docker ps", "docker ps -a", "docker stats", "docker top"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "docker ps zeigt laufende Container, docker ps -a auch gestoppte. docker stats zeigt Ressourcen, docker top Prozesse in einem Container.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "ver_gen_08",
+    "typ": "mc",
+    "frage": "Was ist der Unterschied zwischen `apt update` und `apt upgrade`?",
+    "optionen": ["update aktualisiert die Paketlisten, upgrade installiert die Updates", "upgrade aktualisiert die Listen, update installiert", "Beide sind identisch", "update installiert nur Sicherheitsupdates"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "apt update lädt die Paketlisten (Quellen), apt upgrade installiert verfügbare Updates auf Basis der Listen.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "ver_gen_09",
+    "typ": "mc",
+    "frage": "In C++: Was ist der Unterschied zwischen `#include <iostream>` und `#include \"iostream\"`?",
+    "optionen": ["<> sucht zuerst in den System-Include-Pfaden, \"\" zuerst im aktuellen Verzeichnis", "\"\" sucht nur in System-Pfaden", "<> sucht nur im aktuellen Verzeichnis", "Es gibt keinen Unterschied"],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Winkelklammern: System-Include-Pfade zuerst. Anführungszeichen: aktuelles Verzeichnis zuerst, dann Systempfade (implementierungsabhängig).",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "ver_gen_10",
+    "typ": "mc",
+    "frage": "Aus welchen zwei Befehlen besteht `git pull` im Standardfall?",
+    "optionen": ["git fetch + git merge", "git fetch + git rebase", "git clone + git merge", "git add + git commit"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "git pull = git fetch + git merge (default). Mit --rebase entsprechend fetch + rebase.",
+    "halluzination_kategorie": "verwechslung"
+  }
+]

@@ -1,0 +1,23 @@
+# Compiled / caches
+__pycache__/
+*.pyc
+.venv/
+venv/
+venv_dl/
+
+# Trainingsdaten (lokal, nicht ins Repo — Lizenzen der Quellen)
+data/
+out/
+models/
+*.gguf
+*.safetensors
+*.bin
+
+# Logs & Artefakte
+*.log
+neo11_loss_verlauf.png
+hf_repo_neo1.0/
+hf_upload.py
+
+# OS
+.DS_Store

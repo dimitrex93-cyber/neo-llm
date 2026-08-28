@@ -1,0 +1,174 @@
+[
+  {
+    "id": "cpp_01",
+    "typ": "mc",
+    "frage": "Welcher Operator wird in C++ verwendet, um zwei Werte auf Gleichheit zu vergleichen?",
+    "optionen": [
+      "=",
+      "==",
+      "===",
+      "!="
+    ],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "In C++ prueft `==` auf Gleichheit. Ein einzelnes `=` ist die Zuweisung: `if (x = 5)` weist zu und ist fast immer ein Fehler (Compiler-Warnung). `===` gibt es in C++ nicht (nur in JavaScript), `!=` prueft Ungleichheit.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "cpp_02",
+    "typ": "mc",
+    "frage": "Was gibt ein C++-Programm an das Betriebssystem zurück, wenn `main` keine `return`-Anweisung enthält und regulär zu Ende läuft?",
+    "optionen": [
+      "0",
+      "1",
+      "-1",
+      "Ein undefinierter Wert (Undefined Behavior)"
+    ],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Nach dem C++-Standard entspricht das Erreichen des Endes von `main` ohne `return` einem `return 0;` (Erfolg). Es ist also kein Undefined Behavior. Der Exit-Code 0 bedeutet Erfolg; 1 wird oft für Fehler verwendet.",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "cpp_03",
+    "typ": "mc",
+    "frage": "Welche Aussage über `std::cout` und `std::cin` ist korrekt?",
+    "optionen": [
+      "`std::cout` gibt Text auf der Standardausgabe aus; `std::cin` liest Eingaben ein.",
+      "`std::cout` liest Eingaben von der Tastatur ein; `std::cin` gibt Text aus.",
+      "`std::cout` und `std::cin` sind Funktionen aus `<cstdio>`.",
+      "`std::cout` gibt es erst seit C++20; davor musste man `printf` verwenden."
+    ],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "`std::cout` (character output) schreibt auf die Standardausgabe, `std::cin` (character input) liest von der Standardeingabe. Beide sind Stream-Objekte aus dem Header `<iostream>` und keine Funktionen aus `<cstdio>` (dort liegen `printf`/`scanf`).",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "cpp_04",
+    "typ": "open",
+    "frage": "Schreibe die C++-Anweisung, die eine ganzzahlige Variable namens `alter` deklariert und mit dem Wert 25 initialisiert.",
+    "antwort": "int alter = 25; — Deklaration mit Initialisierung. Alternativ: int alter(25); oder int alter{25}; (Listeninitialisierung).",
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Eine Variable wird als `Typ name = wert;` deklariert. `int` ist der Typ, `alter` der Name, `= 25` die Initialisierung, das Semikolon beendet die Anweisung.",
+    "stichworte": ["int", "alter", "25", "Semikolon", "Initialisierung"],
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "cpp_05",
+    "typ": "mc",
+    "frage": "Was ist das Problem in folgendem Code?\n\n```cpp\nint x = 5;\nif (x = 10) {\n    std::cout << \"x ist 10\";\n}\n```",
+    "optionen": [
+      "`if (x = 10)` ist eine Zuweisung, kein Vergleich: x wird auf 10 gesetzt und die Bedingung ist immer wahr.",
+      "Der Code kompiliert nicht, weil die Funktion `main` fehlt.",
+      "Die Bedingung ist immer falsch, weil x vorher mit 5 initialisiert wurde.",
+      "`std::cout` erfordert `#include <cstdio>`."
+    ],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Mit einem einzelnen `=` wird x der Wert 10 zugewiesen; der Ausdruck `x = 10` hat den Wert 10 (ungleich 0), daher ist die Bedingung immer wahr. Gemeint war `x == 10`. Moderne Compiler warnen davor (z. B. `-Wparentheses`).",
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "cpp_06",
+    "typ": "mc",
+    "frage": "Gegeben: `std::vector<int> v = {10, 20, 30, 40};`. Welchen Index hat das letzte Element?",
+    "optionen": [
+      "3",
+      "4",
+      "5",
+      "0"
+    ],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Vektoren (und Arrays) sind in C++ 0-basiert indiziert. Bei 4 Elementen haben sie die Indizes 0, 1, 2, 3 — das letzte Element hat also den Index 3. Index 4 läge außerhalb des Vektors (Undefined Behavior).",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "cpp_07",
+    "typ": "mc",
+    "frage": "Welche Aussage über Zeiger und Referenzen in C++ ist FALSCH?",
+    "optionen": [
+      "Ein Zeiger kann `nullptr` sein, eine Referenz nicht.",
+      "Eine Referenz muss bei ihrer Deklaration initialisiert werden.",
+      "Referenzen kann man mit `delete` freigeben, wenn man sie nicht mehr benötigt.",
+      "Ein Zeiger kann später auf ein anderes Objekt umgebunden werden, eine Referenz nicht."
+    ],
+    "antwort": 2,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "`delete` gehoert nur zu Zeigern auf mit `new` angelegte Objekte. Referenzen sind Aliase fuer bereits existierende Objekte: Sie muessen bei der Deklaration initialisiert werden, koennen nie `nullptr` sein und lassen sich nicht umbinden — und man kann sie nicht freigeben.",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "cpp_08",
+    "typ": "open",
+    "frage": "Erkläre kurz den Unterschied zwischen `i++` und `++i` in C++.",
+    "antwort": "`i++` (Post-Inkrement) liefert den alten Wert von `i` und erhöht `i` erst danach; `++i` (Prä-Inkrement) erhöht `i` zuerst und liefert den neuen Wert. Bei eingebauten Typen ist der Unterschied nur der Rückgabewert. Bei benutzerdefinierten Typen (z. B. Iteratoren) kann `i++` teuer sein, weil eine Kopie des alten Zustands erzeugt wird — deshalb wird in Schleifen oft `++i` bevorzugt.",
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Beide erhöhen `i` um 1. Der Unterschied liegt im Rückgabewert: `i++` gibt den Wert vor der Erhöhung zurück, `++i` den Wert danach. Der Effekt auf `i` selbst ist in beiden Fällen identisch.",
+    "stichworte": ["Post-Inkrement", "Prä-Inkrement", "alter Wert", "neuer Wert", "Kopie", "Iterator"],
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "cpp_09",
+    "typ": "mc",
+    "frage": "Ist folgende Aussage korrekt: '`const int* p` deklariert einen konstanten Zeiger, der nicht verändert werden kann'?",
+    "optionen": [
+      "Nein. Bei `const int* p` ist der gezeigte Wert konstant; der Zeiger selbst kann auf andere `int`-Objekte zeigen.",
+      "Ja, `const int* p` macht den Zeiger unveränderlich.",
+      "Ja, sowohl der Zeiger als auch der gezeigte Wert sind konstant.",
+      "Nein, der Code kompiliert nicht, weil `const` bei Variablen nicht erlaubt ist."
+    ],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "`const int* p` ist ein Zeiger auf einen konstanten `int` (der Wert ist unveränderlich, der Zeiger nicht). Einen konstanten Zeiger schreibt man als `int* const p`; beides konstant: `const int* const p`. Die Platzierung von `const` entscheidet.",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "cpp_10",
+    "typ": "mc",
+    "frage": "Welche Aussage über `switch`-Anweisungen in C++ ist FALSCH?",
+    "optionen": [
+      "Ein `case`-Block ohne `break` fällt in den nächsten `case` durch (Fall-through).",
+      "`switch` kann mit ganzzahligen Typen, Enums und `char` verwendet werden.",
+      "Jede `switch`-Anweisung muss einen `default`-Fall enthalten.",
+      "Die Werte in `case`-Labels müssen zur Compile-Zeit bekannte Konstanten sein."
+    ],
+    "antwort": 2,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "`default` ist optional — er wird nur ausgeführt, wenn kein `case` passt. Fall-through ohne `break` ist erlaubt (aber oft ein Fehler), `switch` funktioniert nur mit integralen Typen (inkl. `char` und `enum`), und `case`-Werte müssen Compile-Zeit-Konstanten sein.",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "cpp_11",
+    "typ": "open",
+    "frage": "Nenne mindestens zwei Gründe, warum man in C++ `std::vector` einem rohen C-Array (`int arr[100]`) vorziehen sollte.",
+    "antwort": "1. `std::vector` verwaltet seine Größe dynamisch: Elemente können mit `push_back` hinzugefügt werden, die Größe ist über `size()` bekannt. 2. RAII: Der Vektor räumt seinen Speicher automatisch im Destruktor auf — kein manuelles `new`/`delete`, keine Speicherlecks. 3. Rohe Arrays zerfallen bei der Übergabe an Funktionen zu Zeigern (Array-to-Pointer Decay) und verlieren dabei ihre Größeninformation. 4. Vektoren sind kopier- und verschiebbar und bieten Bereichsprüfung über `at()`.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Die Kernpunkte: automatische Speicherverwaltung (RAII), dynamisches Wachstum, bekannte Größe und kein Verfall zu Zeigern bei Funktionsaufrufen. Bereichsprüfung mit `at()` und einfaches Kopieren/Verschieben sind weitere Vorteile.",
+    "stichworte": ["dynamische Größe", "push_back", "size()", "RAII", "Destruktor", "Array-to-Pointer Decay"],
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "cpp_12",
+    "typ": "open",
+    "frage": "Warum stürzt dieses Programm beim Zugriff auf `*p` ab?\n\n```cpp\nvoid addiere(int* p) {\n    p = new int(42);\n}\n\nint main() {\n    int* p = nullptr;\n    addiere(p);\n    std::cout << *p << std::endl;\n}\n```",
+    "antwort": "Der Zeiger wird per Wert übergeben (Call by Value): `addiere` setzt nur die lokale Kopie von `p` auf das neue Objekt, die Variable in `main` bleibt `nullptr`. Der Zugriff `*p` dereferenziert daher einen Nullzeiger (Undefined Behavior, in der Praxis Absturz). Lösung: Übergabe per Referenz `void addiere(int*& p)` oder als `int**`. Außerdem würde das mit `new` erzeugte Objekt nie gelöscht (Speicherleck) — besser `std::unique_ptr` verwenden.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Der subtile Bug: Zeiger werden wie alle Variablen per Wert übergeben. Nur die Kopie wird umgesetzt, der Aufrufer sieht keine Änderung. Erst ein Referenz-Parameter `int*&` oder ein `int**` würde die Änderung nach außen sichtbar machen.",
+    "stichworte": ["Call by Value", "Zeiger-Kopie", "int*&", "nullptr", "Dereferenzierung", "Speicherleck"],
+    "halluzination_kategorie": "code-bug"
+  }
+]

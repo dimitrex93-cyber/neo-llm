@@ -1,0 +1,64 @@
+# Axolotl 0.4.0 Config — QLoRA SFT Qwen2.5-3B-Instruct auf P2000 (Pascal, 5 GB)
+# Pascal: fp16 (kein bf16!), bitsandbytes 0.43.3, kein flash-attn
+
+base_model: /mnt/data_mysql/qlora/models/Qwen2.5-3B-Instruct
+model_type: AutoModelForCausalLM
+tokenizer_type: AutoTokenizer
+tokenizer_use_fast: false  # tokenizer.json ist mit neueren tokenizers gebaut -> slow Tokenizer
+
+# --- QLoRA ---
+load_in_4bit: true
+adapter: qlora
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_modules:
+  - q_proj
+  - k_proj
+  - v_proj
+  - o_proj
+  - gate_proj
+  - up_proj
+  - down_proj
+
+# --- Daten ---
+datasets:
+  - path: /mnt/data_mysql/qlora/data/train_sharegpt_all.jsonl
+    type: sharegpt
+  - path: /mnt/data_mysql/qlora/data/train_completion_all.jsonl
+    type: completion
+
+dataset_prepared_path: /mnt/data_mysql/qlora/data/prepared
+val_set_size: 0.03
+output_dir: /mnt/data_mysql/qlora/out
+
+# --- Training ---
+sequence_len: 512
+sample_packing: false
+pad_to_sequence_len: false
+
+micro_batch_size: 1
+gradient_accumulation_steps: 8
+eval_batch_size: 1
+num_epochs: 3
+learning_rate: 0.0002
+optimizer: paged_adamw_8bit
+lr_scheduler: cosine
+warmup_steps: 20
+
+# Pascal: fp16, KEIN bf16
+fp16: true
+bf16: false
+
+gradient_checkpointing: true
+gradient_checkpointing_kwargs:
+  use_reentrant: false
+
+logging_steps: 5
+eval_steps: 100
+save_steps: 100
+save_total_limit: 2
+
+# --- Sonstiges ---
+wandb_mode: disabled
+seed: 42

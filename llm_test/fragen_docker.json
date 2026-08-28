@@ -1,0 +1,169 @@
+[
+  {
+    "id": "docker_01",
+    "typ": "mc",
+    "frage": "Ein Container wird mit `docker run alpine echo \"fertig\"` gestartet und der Prozess endet ohne Fehler. Welchen Exit-Code zeigt `docker run` nach dem Beenden an?",
+    "optionen": ["0", "1", "130", "137"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Exit-Code 0 bedeutet reguläres, fehlerfreies Beenden. 130 ist 128+SIGINT (2, z. B. Strg+C) und 137 ist 128+SIGKILL (9, z. B. OOM-Kill) — beides typische Verwechslungsfallen.",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "docker_02",
+    "typ": "mc",
+    "frage": "Welche Aussage über den Dockerfile-Befehl `COPY` ist korrekt?",
+    "optionen": [
+      "COPY kann Dateien direkt von einer URL in das Image laden.",
+      "COPY kopiert Dateien oder Verzeichnisse aus dem Build-Kontext in das Image.",
+      "COPY entpackt lokale tar-Archive automatisch in das Image.",
+      "COPY ist nur innerhalb eines `RUN`-Befehls nutzbar."
+    ],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "COPY kopiert ausschließlich aus dem Build-Kontext in das Image. URL-Downloads und automatische Tar-Extraktion sind das Verhalten von ADD; COPY ist ein eigenständiger Dockerfile-Befehl und nicht an RUN gebunden.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "docker_03",
+    "typ": "mc",
+    "frage": "Welcher Befehl mappt den Host-Port 8080 auf den Container-Port 80 eines nginx-Containers?",
+    "optionen": [
+      "docker run -p 80:8080 nginx",
+      "docker run -p 8080:80 nginx",
+      "docker run -P 8080:80 nginx",
+      "docker run --expose 8080 nginx"
+    ],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Die Syntax von -p ist HOST:CONTAINER: `-p 8080:80` bindet Host-Port 8080 an Container-Port 80. -P publiziert alle EXPOSE-Ports auf zufällige Host-Ports, --expose deklariert nur und publiziert nichts nach außen.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "docker_04",
+    "typ": "mc",
+    "frage": "Welche Aussage über `docker exec` ist FALSCH?",
+    "optionen": [
+      "docker exec führt einen neuen Prozess in einem laufenden Container aus.",
+      "docker exec funktioniert auch bei gestoppten Containern.",
+      "Mit `docker exec -it <container> /bin/sh` erhält man eine interaktive Shell im Container.",
+      "docker exec kann zum Debuggen eines laufenden Containers genutzt werden."
+    ],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "docker exec benötigt einen laufenden Container; bei gestoppten Containern schlägt der Befehl mit einem Fehler fehl. Die übrigen Aussagen sind korrekt.",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "docker_05",
+    "typ": "mc",
+    "frage": "Ein Container soll das Host-Verzeichnis `/home/user/daten` unter `/app/daten` sehen, Änderungen beidseitig sichtbar. Ist `docker run -v /home/user/daten:/app/daten ubuntu` dafür korrekt?",
+    "optionen": [
+      "Ja, das erzeugt einen Bind-Mount vom Host-Verzeichnis in den Container.",
+      "Nein, -v erzeugt immer nur anonyme Volumes ohne Bezug zum Host.",
+      "Nein, die korrekte Reihenfolge wäre -v /app/daten:/home/user/daten.",
+      "Nein, Bind-Mounts erfordern zwingend die lange --mount-Form."
+    ],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "`-v HOST-PFAD:CONTAINER-PFAD` ist die Kurzform eines Bind-Mounts: Das Host-Verzeichnis wird direkt eingehängt, Änderungen sind beidseitig sichtbar. Anonyme Volumes entstehen nur ohne Pfadangabe, die lange --mount-Form ist optional.",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "docker_06",
+    "typ": "open",
+    "frage": "Nenne die Standardwerte der HEALTHCHECK-Optionen `--interval`, `--timeout` und `--retries`, wenn sie im Dockerfile nicht gesetzt werden.",
+    "antwort": "Die Docker-Standardwerte für HEALTHCHECK sind: --interval=30s, --timeout=30s und --retries=3. Zusätzlich beträgt --start-period standardmäßig 0s. Ein Container wird erst als unhealthy markiert, wenn die Checks dreimal in Folge fehlschlagen.",
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Docker dokumentiert für HEALTHCHECK exakt diese Defaults: Interval 30s, Timeout 30s, Retries 3, Start-Periode 0s. Gerade diese Zahlen sind typische Halluzinationsfallen für LLMs.",
+    "stichworte": ["interval 30s", "timeout 30s", "retries 3", "start-period 0s"],
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "docker_07",
+    "typ": "mc",
+    "frage": "Ein Image hat im Dockerfile `ENTRYPOINT [\"echo\"]` und `CMD [\"hallo\"]`. Was passiert bei `docker run <image> welt`?",
+    "optionen": [
+      "Es wird 'hallo welt' ausgegeben.",
+      "Es wird 'welt' ausgegeben.",
+      "Es wird 'hallo' ausgegeben, weil CMD Vorrang vor ENTRYPOINT hat.",
+      "Der Start schlägt fehl, weil ENTRYPOINT und CMD zusammen nicht erlaubt sind."
+    ],
+    "antwort": 1,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Beim Start übergebene Argumente ersetzen CMD vollständig und werden an den ENTRYPOINT angehängt: `echo welt`. CMD liefert nur Standard-Argumente, wenn beim Start nichts übergeben wird.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "docker_08",
+    "typ": "open",
+    "frage": "Das folgende Dockerfile soll bei `docker run <image>` die Ausgabe 'Hallo Welt' erzeugen, es erscheint aber nur 'Hallo'. Erkläre den Fehler und den Fix:\n```dockerfile\nFROM alpine:3.20\nENTRYPOINT echo \"Hallo\"\nCMD [\"Welt\"]\n```",
+    "antwort": "ENTRYPOINT steht in Shell-Form, dadurch führt Docker `/bin/sh -c 'echo \"Hallo\"'` aus und die CMD-Argumente werden NICHT an den ENTRYPOINT angehängt. Fix: ENTRYPOINT in Exec-Form schreiben: `ENTRYPOINT [\"echo\", \"Hallo\"]` — dann ergibt `CMD [\"Welt\"]` die Ausgabe 'Hallo Welt'.",
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Shell-Form (ohne Klammern) wird über /bin/sh -c ausgeführt und ignoriert CMD-Argumente; nur die Exec-Form kombiniert ENTRYPOINT mit den CMD-Argumenten. Das ist ein subtiler, typischer Dockerfile-Bug.",
+    "stichworte": ["Shell-Form", "Exec-Form", "CMD-Argumente", "/bin/sh -c", "ENTRYPOINT"],
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "docker_09",
+    "typ": "mc",
+    "frage": "Ist die folgende Aussage korrekt: „Container im selben benutzerdefinierten Bridge-Netzwerk können sich über ihren Containernamen gegenseitig erreichen, ohne dass Ports publiziert werden müssen.\"",
+    "optionen": [
+      "Ja, das benutzerdefinierte Bridge-Netzwerk bietet eingebautes DNS zwischen den Containern.",
+      "Nein, Container können sich nur über ihre IP-Adresse erreichen; DNS gibt es nur im Host-Netzwerk.",
+      "Nein, im Bridge-Netzwerk ist dafür zwingend --link erforderlich.",
+      "Ja, aber nur wenn zusätzlich Ports mit -p publiziert werden."
+    ],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Benutzerdefinierte Bridge-Netzwerke liefern automatisches DNS: Container erreichen sich per Name, Port-Publishing ist dafür nicht nötig. --link ist veraltet und nur im Default-Bridge ohne DNS nötig.",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "docker_10",
+    "typ": "open",
+    "frage": "Erkläre den Unterschied zwischen `docker attach` und `docker exec -it` hinsichtlich des Prozesses, an den sie sich binden, und nenne die Folge für die Lebensdauer des Containers.",
+    "antwort": "docker attach verbindet Terminal-Eingabe und -Ausgabe mit dem Hauptprozess (PID 1) des Containers und liefert dessen Exit-Code; endet dieser Prozess, endet auch der Container. docker exec -it startet dagegen einen neuen, separaten Prozess (z. B. eine Shell) im laufenden Container, dessen Beendigung den Container nicht stoppt. Signale wie Strg+C werden bei attach (--sig-proxy) an den Hauptprozess weitergeleitet, bei exec an den exec-Prozess.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "attach = Bindung an PID 1 mit Signal-Proxy und Exit-Code-Weitergabe; exec = neuer Prozess ohne Einfluss auf die Container-Lebensdauer. Diese Unterscheidung wird von LLMs häufig vermischt.",
+    "stichworte": ["docker attach", "Hauptprozess PID 1", "docker exec", "neuer Prozess", "Exit-Code", "Container-Lebensdauer"],
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "docker_11",
+    "typ": "mc",
+    "frage": "Welche Aussage über Docker-Netzwerke ist FALSCH?",
+    "optionen": [
+      "Das Default-Bridge-Netzwerk bietet ohne --link kein automatisches DNS zwischen verbundenen Containern.",
+      "Im Host-Netzwerk teilt der Container den Netzwerk-Stack des Hosts; -p hat dort keine Wirkung.",
+      "Ein Container kann gleichzeitig mehreren Netzwerken angehören.",
+      "`docker network connect` funktioniert nur bei gestoppten Containern."
+    ],
+    "antwort": 3,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "docker network connect funktioniert auch bei laufenden Containern — die Verbindung wird live hergestellt. Die übrigen Aussagen sind korrekt: Default-Bridge hat kein eingebautes DNS, Host-Netzwerk ignoriert Port-Publishing, mehrere Netzwerke pro Container sind erlaubt.",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "docker_12",
+    "typ": "open",
+    "frage": "Ein laufender Container heißt `web1`. Mit `docker run --env MODE=prod web1` soll ihm die Umgebungsvariable MODE=prod gesetzt werden. Was ist der Fehler, und wie geht es korrekt?",
+    "antwort": "docker run startet immer einen NEUEN Container aus dem Image; die laufende Instanz `web1` wird dadurch nicht verändert. Zudem lassen sich Umgebungsvariablen eines laufenden Prozesses nicht nachträglich setzen. Korrekt: Den Container mit `docker run -e MODE=prod <image>` neu erstellen bzw. mit geänderter Konfiguration neu starten. Für einen einmaligen Debug-Befehl im laufenden Container kann `docker exec -e MODE=prod web1 <befehl>` (ab Docker 23.0) die Variable für genau diesen Prozess setzen.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Kernfehler: run erzeugt einen neuen Container, ändert die laufende Instanz nicht; Env-Variablen sind zur Laufzeit nicht änderbar. Lösung: Neustart mit -e oder docker exec -e für Einzelprozesse.",
+    "stichworte": ["docker run", "neuer Container", "laufende Instanz", "-e/--env", "docker exec -e", "Neustart"],
+    "halluzination_kategorie": "code-bug"
+  }
+]

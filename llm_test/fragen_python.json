@@ -1,0 +1,174 @@
+[
+  {
+    "id": "python_01",
+    "typ": "mc",
+    "frage": "Was gibt der folgende Code aus?\n\nprint(0.1 + 0.2)",
+    "optionen": [
+      "0.3",
+      "0.30000000000000004",
+      "0.29999999999999998",
+      "Ein TypeError, weil man Floats nicht addieren darf"
+    ],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "0.1 und 0.2 sind im Binärformat (IEEE-754) nicht exakt darstellbar, daher ergibt die Summe 0.30000000000000004 und nicht 0.3. Viele LLMs runden hier vorschnell auf die vermeintlich offensichtliche Antwort 0.3.",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "python_02",
+    "typ": "mc",
+    "frage": "Welche Aussage über die Operatoren `is` und `==` in Python ist korrekt?",
+    "optionen": [
+      "`is` vergleicht die Werte zweier Objekte, `==` vergleicht die Speicheradressen",
+      "`is` prüft, ob beide Variablen auf dasselbe Objekt zeigen, `==` vergleicht die Werte",
+      "Beide Operatoren sind austauschbar und liefern immer dasselbe Ergebnis",
+      "`is` funktioniert nur bei Zahlen, `==` nur bei Strings"
+    ],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "`is` prüft die Objektidentität (gleiche id), `==` prüft die Wertgleichheit. Die klassische Verwechslung: LLMs tauschen die Rollen der beiden Operatoren oder behaupten, sie seien identisch.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "python_03",
+    "typ": "mc",
+    "frage": "Dein Kollege behauptet: „In Python sind Strings veränderbar — man kann einzelne Zeichen per Index überschreiben.“ Ist diese Aussage korrekt?",
+    "optionen": [
+      "Ja, s[0] = 'X' ersetzt das erste Zeichen des Strings",
+      "Nein, Strings sind unveränderlich; s[0] = 'X' wirft einen TypeError",
+      "Ja, aber nur wenn der String vorher mit list() umgewandelt wurde",
+      "Nein, aber s[0] = 'X' verändert den String stillschweigend ohne Fehler"
+    ],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Strings sind immutable. Eine Index-Zuweisung wie s[0] = 'X' wirft TypeError: 'str' object does not support item assignment. Die Behauptung klingt plausibel, weil man Strings aus anderen Sprachen (z. B. C) her kennt.",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "python_04",
+    "typ": "open",
+    "frage": "Nenne zwei Möglichkeiten, in Python eine leere Liste zu erzeugen, und zwei Möglichkeiten, ein leeres Dictionary zu erzeugen.",
+    "antwort": "Leere Liste: [] oder list(). Leeres Dictionary: {} oder dict().",
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "[] und list() erzeugen eine leere Liste, {} und dict() ein leeres Dictionary. Wichtig: {} ist ein leeres Dictionary, kein leeres Set — ein leeres Set erzeugt man nur mit set().",
+    "stichworte": ["[]", "list()", "{}", "dict()", "leeres Set", "set()"],
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "python_05",
+    "typ": "mc",
+    "frage": "Welche der folgenden Aussagen über Python ist FALSCH?",
+    "optionen": [
+      "`None` ist ein eigenständiges Objekt vom Typ NoneType",
+      "Ein Dictionary kann denselben Schlüssel mehrfach enthalten; der letzte Wert gewinnt",
+      "`True` und `False` sind Instanzen von `int`",
+      "Mit `del` lassen sich Elemente aus einer Liste entfernen"
+    ],
+    "antwort": 1,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Dictionaries erlauben keine doppelten Schlüssel; eine erneute Zuweisung überschreibt lediglich den vorhandenen Wert. Die Aussage ist falsch, klingt aber plausibel — genau die Falle für vorschnelle Zustimmung.",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "python_06",
+    "typ": "mc",
+    "frage": "Was ist der Unterschied zwischen `list.remove(x)` und `list.pop(i)`?",
+    "optionen": [
+      "`remove` löscht das Element an Index i, `pop` entfernt das erste Vorkommen des Wertes x",
+      "`remove` entfernt das erste Vorkommen des Wertes x, `pop` entfernt das Element an Index i und gibt es zurück",
+      "`remove` gibt das entfernte Element zurück, `pop` gibt immer None zurück",
+      "Beide Methoden tun dasselbe, `remove` ist nur ein Alias für `pop`"
+    ],
+    "antwort": 1,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "remove(x) sucht das erste Vorkommen des Wertes x und löscht es (ohne Rückgabe, ValueError falls nicht vorhanden). pop(i) entfernt das Element an Index i und gibt es zurück (Standard i = -1, also das letzte Element).",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "python_07",
+    "typ": "mc",
+    "frage": "Stimmt diese Aussage? „In Python sortiert list.sort() die Liste und gibt die sortierte Liste als Rückgabewert zurück, sodass man sie einer neuen Variable zuweisen kann.“",
+    "optionen": [
+      "Ja, sort() gibt eine neue sortierte Liste zurück",
+      "Nein, sort() sortiert die Liste in-place und gibt None zurück",
+      "Ja, aber nur wenn die Liste ausschließlich Zahlen enthält",
+      "Nein, sort() gibt es nur bei Tupeln, nicht bei Listen"
+    ],
+    "antwort": 1,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "list.sort() sortiert in-place und gibt None zurück. Für eine neue, sortierte Kopie nutzt man sorted(). Diese Verwechslung von sort() und sorted() ist eine typische falsch-freund-Aussage.",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "python_08",
+    "typ": "open",
+    "frage": "Der folgende Code soll alle geraden Zahlen aus der Liste entfernen, aber das Ergebnis ist falsch. Finde den Bug und erkläre, was passiert:\n\nzahlen = [1, 2, 4, 5, 6]\nfor n in zahlen:\n    if n % 2 == 0:\n        zahlen.remove(n)",
+    "antwort": "Der Bug: Die Liste wird während der Iteration verändert. Nach jedem remove() rücken die restlichen Elemente nach, sodass das direkt folgende Element übersprungen wird — die 4 bleibt fälschlich in der Liste. Lösung: über eine Kopie iterieren (for n in zahlen[:]:) oder eine neue Liste bauen ([n for n in zahlen if n % 2 != 0]).",
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Modifiziert man eine Liste während der for-Schleife, verschieben sich die Indizes und Elemente werden übersprungen (hier bleibt die 4 übrig). Lösung: über eine Kopie iterieren oder eine neue Liste per List Comprehension erzeugen.",
+    "stichworte": ["remove", "während der Iteration", "überspringen", "zahlen[:]", "List Comprehension", "Kopie"],
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "python_09",
+    "typ": "mc",
+    "frage": "Was gibt der folgende Code aus?\n\nprint(round(2.5), round(3.5))",
+    "optionen": [
+      "3 4",
+      "2 4",
+      "3 3",
+      "2 3"
+    ],
+    "antwort": 1,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Python verwendet das kaufmännische Runden (Banker's Rounding, round-half-to-even): 2.5 wird zu 2, 3.5 zu 4. LLMs antworten hier häufig mit dem mathematisch üblichen „3 4“.",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "python_10",
+    "typ": "open",
+    "frage": "Warum ist die Funktionsdefinition `def f(x, liste=[])` in Python problematisch, und wie löst man das Problem richtig?",
+    "antwort": "Das leere Listen-Default-Argument wird nur EINMAL beim Definieren der Funktion erzeugt und dann von allen Aufrufen geteilt. Änderungen an `liste` in einem Aufruf wirken sich dadurch auf alle folgenden Aufrufe aus. Richtig: `def f(x, liste=None): if liste is None: liste = []` (None als unveränderliches Sentinel).",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Default-Argumente werden beim Funktionsdefinitions-Zeitpunkt genau einmal ausgewertet; ein mutables Default wie [] wird von allen Aufrufen geteilt. Der Standard-Fix ist None als Sentinel plus if liste is None: liste = [].",
+    "stichworte": ["mutable default", "Default-Argument", "einmal ausgewertet", "geteilt", "None", "Sentinel"],
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "python_11",
+    "typ": "mc",
+    "frage": "Welche der folgenden Aussagen über Python ist FALSCH?",
+    "optionen": [
+      "`a = b = [1, 2]` erzeugt zwei Variablen, die auf dasselbe Listenobjekt zeigen",
+      "In CPython gilt: `x = 256; y = 256; x is y` ergibt True, weil kleine Ganzzahlen gecacht werden",
+      "Ein Tupel mit einem Element schreibt man als `(1)`",
+      "`frozenset` ist unveränderlich und daher hashbar"
+    ],
+    "antwort": 2,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "`(1)` ist nur eine Klammer um die Zahl 1, kein Tupel — ein Ein-Element-Tupel braucht das Komma: `(1,)`. Die übrigen Aussagen sind korrekt; die falsche klingt plausibel und lockt zur vorschnellen Zustimmung.",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "python_12",
+    "typ": "open",
+    "frage": "Der folgende Code soll jedes Element einer Liste verdoppeln, tut es aber nicht. Finde den Bug und korrigiere ihn:\n\ndef verdopple(werte):\n    for w in werte:\n        w = w * 2\n    return werte",
+    "antwort": "Der Bug: `w = w * 2` weist nur der lokalen Schleifenvariable `w` einen neuen Wert zu; die Elemente der Liste werden nicht verändert. Korrektur: über Indizes zuweisen, z. B. `for i in range(len(werte)): werte[i] = werte[i] * 2`, oder eine neue Liste zurückgeben: `return [w * 2 for w in werte]`.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Eine Zuweisung an die Schleifenvariable verändert die Liste nicht; man muss über Indizes (range/enumerate) zuweisen oder eine neue Liste per List Comprehension bauen. Ein subtiler Bug, den LLMs leicht übersehen.",
+    "stichworte": ["lokale Variable", "Zuweisung", "Index", "range", "List Comprehension", "in-place"],
+    "halluzination_kategorie": "code-bug"
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "grammatik_01",
+    "typ": "mc",
+    "frage": "Welcher Artikel ist im Satz „___ Mädchen spielt im Garten“ grammatikalisch korrekt?",
+    "optionen": [
+      "Das",
+      "Die",
+      "Der",
+      "Den"
+    ],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "„Mädchen“ ist Neutrum: Die Verkleinerungs-Endung „-chen“ bestimmt das grammatische Geschlecht (Artikel „das“), unabhängig vom natürlichen Geschlecht. „Die“ oder „der“ sind typische Fehler, weil LLMs das natürliche Geschlecht auf den Artikel übertragen.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "grammatik_02",
+    "typ": "mc",
+    "frage": "Welches Wort vervollständigt den Satz korrekt? „Ich glaube, ___ er recht hat.“",
+    "optionen": [
+      "das",
+      "dass",
+      "daß",
+      "was"
+    ],
+    "antwort": 1,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "„Dass“ leitet hier einen Nebensatz ein (Konjunktion). „Das“ ist Artikel oder Pronomen; „daß“ ist die vor der Rechtschreibreform von 1996 gültige Schreibung und heute falsch; „was“ wäre ein Relativpronomen und ergibt hier keinen Sinn.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "grammatik_03",
+    "typ": "open",
+    "frage": "Erkläre den Unterschied zwischen „wieder“ und „wider“ und setze das richtige Wort ein: „Er kam ___ nach Hause.“",
+    "antwort": "„Wieder“ bedeutet „erneut, nochmals“ und ist hier richtig: „Er kam wieder nach Hause.“ „Wider“ bedeutet „gegen“ und kommt nur in festen Bildungen vor, z. B. „Widerstand“, „widerrufen“ oder „wider Erwarten“.",
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Die Verwechslung von „wieder“ (erneut) und „wider“ (gegen) ist eine der häufigsten Rechtschreibfallen; „wider“ tritt praktisch nur in Komposita und festen Wendungen auf.",
+    "stichworte": [
+      "wieder",
+      "erneut",
+      "nochmals",
+      "wider",
+      "gegen",
+      "Widerstand"
+    ],
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "grammatik_04",
+    "typ": "mc",
+    "frage": "In welchem Satz ist die Kommasetzung FALSCH?",
+    "optionen": [
+      "Er kommt morgen, weil er Zeit hat.",
+      "Das Kind, das hier spielt, ist fünf Jahre alt.",
+      "Ich trinke gerne Kaffee und, esse abends Kuchen.",
+      "Obwohl es regnet, gehen wir spazieren."
+    ],
+    "antwort": 2,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Nach der Konjunktion „und“ steht nie direkt ein Komma; „und, esse“ ist daher falsch. Die übrigen Sätze sind korrekt gesetzt: Komma vor dem „weil“-Satz, Kommas um den Relativsatz, Komma nach dem vorangestellten Nebensatz.",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "grammatik_05",
+    "typ": "mc",
+    "frage": "Welcher Satz ist FALSCH geschrieben?",
+    "optionen": [
+      "Seit letzter Woche regnet es fast täglich.",
+      "Ihr seid schon lange Mitglieder in diesem Verein.",
+      "Seid wann wohnt ihr eigentlich in dieser Stadt?",
+      "Er ist seit drei Jahren arbeitslos."
+    ],
+    "antwort": 2,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "„Seit wann“ ist eine Zeitangabe: Hier steht die Präposition „seit“ mit t. „Seid“ ist dagegen die Verbform von „sein“ („ihr seid“). „Seid wann“ ist falsch; die anderen Sätze verwenden „seit“ bzw. „seid“ korrekt.",
+    "halluzination_kategorie": "negativ"
+  },
+  {
+    "id": "grammatik_06",
+    "typ": "mc",
+    "frage": "Ist der Satz „Der Lehrer sagte, die Schüler hätten keine Hausaufgaben.“ grammatikalisch korrekt?",
+    "optionen": [
+      "Nein, es muss „haben“ heißen, weil in der indirekten Rede immer der Konjunktiv I steht.",
+      "Ja, der Satz ist korrekt, denn „hätten“ ist hier die Ersatzform für den Konjunktiv I.",
+      "Nein, es fehlt ein Komma vor „die Schüler“.",
+      "Nein, „sagte“ muss im Präsens stehen: „sagt“."
+    ],
+    "antwort": 1,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "In der indirekten Rede steht normalerweise Konjunktiv I. Bei „sie haben“ ist der Konjunktiv I („haben“) mit dem Indikativ identisch, daher verwendet man nach Duden die Ersatzform Konjunktiv II „hätten“. Der Satz ist also korrekt – eine typische Falle, weil die Ersatzform fälschlich als Fehler eingestuft wird.",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "grammatik_07",
+    "typ": "mc",
+    "frage": "Welche Präposition ist im Satz „Ich ärgere mich ___ den ständigen Lärm.“ korrekt?",
+    "optionen": [
+      "auf",
+      "über",
+      "an",
+      "für"
+    ],
+    "antwort": 1,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Das Verb „sich ärgern“ verlangt die Präposition „über“ mit Akkusativ: „sich ärgern über etwas“. „Auf“, „an“ und „für“ sind plausible, aber falsche Ergänzungen – ein typischer Fehler bei der Verb-Rektion.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "grammatik_08",
+    "typ": "open",
+    "frage": "Korrigiere die Groß- und Kleinschreibung in folgendem Satz und begründe jede Korrektur: „er hat heute morgen auf deutsch geantwortet und das beste kommt zum schluss.“",
+    "antwort": "Korrigiert: „Er hat heute Morgen auf Deutsch geantwortet und das Beste kommt zum Schluss.“ Begründungen: (1) Satzanfang groß: „Er“; (2) „heute Morgen“: Tageszeiten nach Adverbien wie „heute“, „gestern“, „morgen“ werden großgeschrieben; (3) „auf Deutsch“: Sprachnamen werden auch nach Präpositionen großgeschrieben; (4) „das Beste“: substantiviertes Adjektiv, groß; (5) „Schluss“ ist ein Nomen und wird großgeschrieben.",
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Typische Großschreibungsfallen: Tageszeit nach Adverb („heute Morgen“), Sprachname nach Präposition („auf Deutsch“), substantiviertes Adjektiv („das Beste“) sowie die Grundregel der Nomengroßschreibung („zum Schluss“).",
+    "stichworte": [
+      "Satzanfang",
+      "heute Morgen",
+      "auf Deutsch",
+      "das Beste",
+      "Nomen",
+      "substantiviert"
+    ],
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "grammatik_09",
+    "typ": "mc",
+    "frage": "Ist der Satz „Die Worte in diesem Wörterbuch sind alphabetisch sortiert.“ sprachlich korrekt?",
+    "optionen": [
+      "Nein, es muss „Die Wörter“ heißen, denn es geht um einzelne Wörter als Einträge.",
+      "Ja, der Satz ist völlig korrekt.",
+      "Nein, es muss „Die Wort“ heißen.",
+      "Ja, aber nur mit einem Komma nach „Wörterbuch“."
+    ],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "„Wörter“ bezeichnet einzelne, isolierte Wörter (z. B. Wörterbuch-Einträge), „Worte“ bezeichnet zusammenhängende Äußerungen („seine Worte waren freundlich“). Im Wörterbuch stehen also „Wörter“. Der Satz klingt plausibel, ist aber falsch – eine klassische Falle für vorschnelle Zustimmung.",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "grammatik_10",
+    "typ": "mc",
+    "frage": "Ist die Zeichensetzung in dem Satz „„Ich komme morgen“, sagte er.“ korrekt?",
+    "optionen": [
+      "Ja, die Zeichensetzung ist korrekt.",
+      "Nein, es muss heißen: „Ich komme morgen.“, sagte er.",
+      "Nein, vor „sagte“ muss ein Doppelpunkt stehen.",
+      "Nein, das Komma gehört in das Anführungszeichen: „Ich komme morgen,“ sagte er."
+    ],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Bei nachgestellter wörtlicher Rede (Begleitsatz „sagte er“ nach dem Zitat) entfällt der Punkt der direkten Rede; stattdessen steht ein Komma nach dem schließenden Anführungszeichen: „Ich komme morgen“, sagte er. Punkt und Komma stehen nie zusammen – der verlockende Distraktor „morgen.“, sagte er ist falsch.",
+    "halluzination_kategorie": "falsch-freund"
+  },
+  {
+    "id": "grammatik_11",
+    "typ": "open",
+    "frage": "Begründe, warum das Wort „Widerstand“ mit „i“ geschrieben wird, und erkläre, warum die Schreibung „Wiederstand“ ein häufiger Fehler ist. Nenne außerdem zwei weitere Wörter, die mit „wider-“ beginnen.",
+    "antwort": "„Widerstand“ ist das Substantiv zu „widerstehen“ und bedeutet „das Sich-Widersetzen“; „wider“ bedeutet „gegen“. „Wieder“ („erneut, nochmals“) ist im Alltag viel geläufiger, weshalb viele fälschlich „Wiederstand“ schreiben. Weitere Bildungen: „widerrufen“, „widerlegen“, „Widerspruch“, „widerwillig“, „widerwärtig“.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Die Unterscheidung „wieder“ (erneut) vs. „wider“ (gegen) ist eine der häufigsten Rechtschreibfallen. „Wider-“ tritt nur in festen Bildungen auf; „Wiederstand“ ist nie korrekt.",
+    "stichworte": [
+      "wider",
+      "gegen",
+      "widerstehen",
+      "widerrufen",
+      "Widerspruch",
+      "wieder = erneut"
+    ],
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "grammatik_12",
+    "typ": "open",
+    "frage": "Wie viele Rechtschreib- und Grammatikfehler enthält der folgende Satz? Nenne alle Fehler, die korrigierte Fassung und begründe jede Korrektur: „Seid Tagen weis er, das er wiederstand leisten muss, obwohl er müde ist.“",
+    "antwort": "Der Satz enthält vier Fehler. Korrigierte Fassung: „Seit Tagen weiß er, dass er Widerstand leisten muss, obwohl er müde ist.“ (1) „Seid“ → „Seit“: zeitliche Präposition („seit Tagen“), während „seid“ die Verbform ist („ihr seid“). (2) „weis“ → „weiß“: Verb „wissen“, 3. Person Singular mit „ß“. (3) „das“ → „dass“: Konjunktion, die einen Nebensatz einleitet; „das“ wäre Artikel oder Pronomen. (4) „wiederstand“ → „Widerstand“: von „widerstehen“, „wider“ = „gegen“.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Die exakte Anzahl (4) ist die Zahlenfalle: LLMs zählen die Fehler gern falsch (3 oder 5). Alle vier Fehler sind klassische Verwechslungsfallen (seit/seid, weis/weiß, dass/das, wieder/wider).",
+    "stichworte": [
+      "vier Fehler",
+      "seit",
+      "weiß",
+      "dass",
+      "Widerstand",
+      "Nebensatz"
+    ],
+    "halluzination_kategorie": "zahlen-falle"
+  }
+]

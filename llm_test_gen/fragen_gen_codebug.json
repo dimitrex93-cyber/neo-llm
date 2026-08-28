@@ -1,0 +1,112 @@
+[
+  {
+    "id": "cb_gen_01",
+    "typ": "mc",
+    "frage": "Was ist das Problem an dieser Python-Funktion?\n\ndef add(x, lst=[]):\n    lst.append(x)\n    return lst",
+    "optionen": ["Die Default-Liste ist veränderlich und wird zwischen Aufrufen geteilt", "Die Funktion ist rekursiv", "lst ist ein Tupel", "append gibt None zurück und das ist ein Fehler"],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Mutable Default-Argumente werden einmal erzeugt und über alle Aufrufe geteilt. Fix: lst=None und im Body lst = [] falls None.",
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "cb_gen_02",
+    "typ": "mc",
+    "frage": "Was gibt dieser Python-Code aus?\n\nx = [1, 2, 3]\ny = x\ny.append(4)\nprint(x)",
+    "optionen": ["[1, 2, 3, 4]", "[1, 2, 3]", "[4]", "Fehler"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "y = x erzeugt keine Kopie, sondern eine Referenz auf dieselbe Liste. append über y verändert auch x. Fix: y = x.copy() oder x[:].",
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "cb_gen_03",
+    "typ": "mc",
+    "frage": "Warum ist dieser C++-Code problematisch?\n\nint* p;\n*p = 5;",
+    "optionen": ["p ist uninitialisiert – der Zugriff ist undefiniertes Verhalten", "int* darf nicht zugewiesen werden", "5 ist kein gültiger int", "Es fehlt ein Semikolon"],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "p zeigt auf eine beliebige Adresse. *p = 5 schreibt dorthin – undefiniertes Verhalten, oft Segfault. Fix: p = new int(5) oder Stack-Variable.",
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "cb_gen_04",
+    "typ": "mc",
+    "frage": "Was ist an diesem Python-Code falsch?\n\nif x = 5:\n    print(\"fünf\")",
+    "optionen": ["Eine Zuweisung ist in einer Bedingung ein SyntaxError", "x muss erst deklariert werden", "print braucht Klammern", "Die Einrückung ist falsch"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Python erlaubt keine Zuweisung in Bedingungen (anders als C). Fix: if x == 5: oder den Walrus-Operator if (x := 5):",
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "cb_gen_05",
+    "typ": "mc",
+    "frage": "Wie oft läuft diese C++-Schleife?\n\nfor (int i = 0; i <= 10; i++) { }",
+    "optionen": ["11-mal", "10-mal", "9-mal", "unendlich oft"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "i läuft von 0 bis einschließlich 10: 11 Iterationen. Klassischer off-by-one: i <= 10 statt i < 10.",
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "cb_gen_06",
+    "typ": "mc",
+    "frage": "Was gibt dieser Python-Code aus?\n\nprint(10 / 3)",
+    "optionen": ["3.3333333333333335", "3", "3.0", "Fehler"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "/ ist echte Division (float). Ganzzahlige Division wäre // (ergibt 3). 10/3 ist in Python 3 immer float.",
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "cb_gen_07",
+    "typ": "mc",
+    "frage": "Was ist der Bug in diesem Shell-Kommando?\n\ncat logfile | grep Fehler > logfile",
+    "optionen": ["Die Ausgabe-Umleitung leert logfile, bevor cat es liest", "grep kann keine Pipe mit cat", "> ist kein gültiger Operator", "Es fehlen Anführungszeichen um Fehler"],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Die Shell öffnet logfile für > und leert es, BEVOR cat läuft. Ergebnis: leere Datei. Fix: in eine Temp-Datei schreiben und dann verschieben.",
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "cb_gen_08",
+    "typ": "mc",
+    "frage": "Was passiert bei diesem Python-Code?\n\nd = {}\nd[\"anzahl\"] += 1",
+    "optionen": ["KeyError, weil der Schlüssel nicht existiert", "d = {'anzahl': 1}", "d = {'anzahl': 0}", "TypeError"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "d[\"anzahl\"] += 1 ist d[\"anzahl\"] = d[\"anzahl\"] + 1 – der Zugriff auf den fehlenden Schlüssel wirft KeyError. Fix: d.get(\"anzahl\", 0) + 1 oder defaultdict.",
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "cb_gen_09",
+    "typ": "mc",
+    "frage": "Warum ist dieser C++-Zugriff gefährlich?\n\nstd::string s = \"Hallo\";\nchar c = s[10];",
+    "optionen": ["Index 10 ist außerhalb der Länge – undefiniertes Verhalten", "std::string kann nicht per Index zugegriffen werden", "char ist der falsche Typ", "Es fehlt #include <string>"],
+    "antwort": 0,
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "operator[] prüft keine Grenzen. s[10] bei Länge 5 ist undefiniertes Verhalten. Fix: s.at(10) wirft out_of_range.",
+    "halluzination_kategorie": "code-bug"
+  },
+  {
+    "id": "cb_gen_10",
+    "typ": "mc",
+    "frage": "Was gibt dieser Python-Code aus?\n\ndef f():\n    return\n\nprint(f() + 1)",
+    "optionen": ["TypeError: unsupported operand (None + int)", "1", "0", "None"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "return ohne Wert gibt None zurück. None + 1 wirft TypeError.",
+    "halluzination_kategorie": "code-bug"
+  }
+]

@@ -1,0 +1,200 @@
+[
+  {
+    "id": "linux_gen_01",
+    "typ": "mc",
+    "frage": "Welcher Befehl zeigt alle Umgebungsvariablen der aktuellen Shell an?",
+    "optionen": ["env", "echo $PATH", "export", "set -a"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "env (ohne Argumente) listet alle Umgebungsvariablen. echo $PATH zeigt nur PATH, export setzt Variablen, set -a exportiert automatisch.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "linux_gen_02",
+    "typ": "mc",
+    "frage": "Welche Rechte hat eine Datei mit chmod 640?",
+    "optionen": ["Owner rw, Gruppe r, Andere nichts", "Owner rwx, Gruppe r, Andere nichts", "Owner rw, Gruppe rw, Andere nichts", "Owner r, Gruppe rw, Andere nichts"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "6 = rw (Owner), 4 = r (Gruppe), 0 = nichts (Andere).",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "linux_gen_03",
+    "typ": "open",
+    "frage": "Erkläre den Unterschied zwischen einer harten und einer symbolischen Verknüpfung (hard link vs. symlink) in Linux.",
+    "antwort": "Ein harter Link ist ein weiterer Name für denselben Inode – er funktioniert nur innerhalb desselben Dateisystems und zeigt auch nach dem Löschen der Originaldatei weiter auf die Daten. Ein symbolischer Link ist eine eigene Datei, die einen Pfad speichert – er kann über Dateisystemgrenzen gehen, wird aber ungültig, wenn das Ziel gelöscht oder verschoben wird.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Klassiker: Inode vs. Pfad. ln erzeugt hart, ln -s symbolisch.",
+    "stichworte": ["Inode", "Dateisystem", "Pfad", "ln -s"],
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "docker_gen_01",
+    "typ": "mc",
+    "frage": "Was bedeutet der Docker-Container-Status „Exited (0)“?",
+    "optionen": ["Der Container wurde beendet und der Hauptprozess endete erfolgreich mit Exit-Code 0", "Der Container ist abgestürzt", "Der Container läuft im Hintergrund", "Der Container wurde pausiert"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Exited (Code) = Hauptprozess beendet; Code 0 = erfolgreich. Ein Absturz hätte einen Code ungleich 0.",
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "docker_gen_02",
+    "typ": "mc",
+    "frage": "Welcher Befehl entfernt alle ungenutzten Docker-Objekte (Images, Container, Netzwerke)?",
+    "optionen": ["docker system prune", "docker rmi -a", "docker rm -a", "docker image clean"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "docker system prune räumt ungenutzte Objekte auf. rmi -a entfernt ALLE Images (auch genutzte), rm -a entfernt alle Container.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "docker_gen_03",
+    "typ": "open",
+    "frage": "Was ist der Unterschied zwischen einem Docker-Image und einem Docker-Container?",
+    "antwort": "Ein Image ist eine unveränderliche Vorlage (Schichten aus Dateisystem + Metadaten). Ein Container ist eine laufende Instanz eines Images mit eigenem beschreibbaren Layer, Prozess-Isolation und Netzwerk. Aus einem Image können viele Container gestartet werden.",
+    "punkte": 3,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Vorlage vs. Instanz – analog Klasse vs. Objekt.",
+    "stichworte": ["Vorlage", "Instanz", "Schichten", "beschreibbar"],
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "netz_gen_01",
+    "typ": "mc",
+    "frage": "Welcher DNS-Record-Typ ordnet einem Hostnamen eine IPv6-Adresse zu?",
+    "optionen": ["AAAA", "A", "CNAME", "MX"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "AAAA = IPv6, A = IPv4, CNAME = Alias, MX = Mailserver.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "netz_gen_02",
+    "typ": "mc",
+    "frage": "Welcher Standard-Port gehört zu SSH?",
+    "optionen": ["22", "21", "23", "25"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "SSH = 22, FTP = 21, Telnet = 23, SMTP = 25.",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "netz_gen_03",
+    "typ": "open",
+    "frage": "Erkläre kurz den Unterschied zwischen einer öffentlichen und einer privaten IPv4-Adresse und nenne ein Beispiel für einen privaten Bereich.",
+    "antwort": "Öffentliche Adressen sind im Internet routbar und weltweit eindeutig. Private Adressen (RFC 1918) sind nur im lokalen Netz gültig und werden nicht ins Internet geroutet; sie werden per NAT übersetzt. Beispiele: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16.",
+    "punkte": 3,
+    "schwierigkeit": "mittel",
+    "erklaerung": "RFC-1918-Bereiche sind Standardwissen für Netzwerktechnik.",
+    "stichworte": ["RFC 1918", "192.168", "NAT", "privat"],
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "github_gen_01",
+    "typ": "mc",
+    "frage": "Was bewirkt `git stash`?",
+    "optionen": ["Es legt uncommittete Änderungen beiseite und macht das Arbeitsverzeichnis sauber", "Es löscht die letzten Commits", "Es pusht Änderungen in den Stash-Branch", "Es erstellt einen automatischen Commit"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "git stash parkt lokale Änderungen (Working Tree + Index) und stellt den letzten Commit-Zustand wieder her. Zurückholen: git stash pop.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "github_gen_02",
+    "typ": "mc",
+    "frage": "Was ist der Unterschied zwischen einem Pull Request und einem Merge Request?",
+    "optionen": ["PR = GitHub/Gitea-Terminologie, MR = GitLab-Terminologie für dasselbe Konzept", "PR ist für Code, MR für Doku", "MR kann nur von Maintainern erstellt werden", "Es gibt keinen Unterschied"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Gleiches Konzept (Änderungsvorschlag zur Review), nur plattformspezifische Namen.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "github_gen_03",
+    "typ": "open",
+    "frage": "Was bedeutet es, wenn ein Commit mit `git revert` rückgängig gemacht wird, und was passiert mit der Historie?",
+    "antwort": "git revert erzeugt einen NEUEN Commit, der die Änderungen des Ziel-Commits rückgängig macht. Die Historie bleibt erhalten (rewrite-frei) – anders als git reset, das die Historie umschreibt. Deshalb ist revert die sichere Wahl für bereits gepushte Commits.",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "revert = neuer Commit, reset = Historie umschreiben. Wichtig für kollaborative Arbeit.",
+    "stichworte": ["neuen Commit", "Historie", "reset", "gepushte"],
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "cpp_gen_01",
+    "typ": "mc",
+    "frage": "Was gibt `sizeof(char)` in C++ standardkonform zurück?",
+    "optionen": ["1", "4", "8", "Implementierungsabhängig, meist 1"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Der Standard garantiert sizeof(char) == 1. Die Größe anderer Typen wird in char-Einheiten gemessen.",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "cpp_gen_02",
+    "typ": "mc",
+    "frage": "Welcher Speicherklassenspezifizierer legt eine Variable an, die ihren Wert zwischen Funktionsaufrufen behält?",
+    "optionen": ["static", "const", "extern", "volatile"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "static in einer Funktion erzeugt eine Variable mit statischer Lebensdauer. const = unveränderlich, extern = andere Übersetzungseinheit, volatile = verhindert Optimierung.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "cpp_gen_03",
+    "typ": "open",
+    "frage": "Erkläre den Unterschied zwischen Stack und Heap in C++ und nenne je ein Beispiel, was typischerweise wo lebt.",
+    "antwort": "Der Stack ist ein schneller, automatisch verwalteter Speicherbereich mit fester Größe (LIFO); lokale Variablen leben dort und werden beim Verlassen des Scopes freigegeben. Der Heap ist ein größerer, manuell (new/delete, smart pointer) verwalteter Bereich; dynamische Objekte, deren Lebensdauer nicht an einen Scope gebunden ist, leben dort. Beispiel: int x = 5 (Stack), std::vector<int> v(1000) intern Heap, new int (Heap).",
+    "punkte": 3,
+    "schwierigkeit": "schwer",
+    "erklaerung": "Fundamentales C++-Konzept, oft verwechselt mit Größe/Performance.",
+    "stichworte": ["Stack", "Heap", "automatisch", "new"],
+    "halluzination_kategorie": "detail"
+  },
+  {
+    "id": "python_gen_01",
+    "typ": "mc",
+    "frage": "Was gibt `len(\"héllo\")` in Python 3 zurück?",
+    "optionen": ["5", "6", "4", "Fehler"],
+    "antwort": 0,
+    "punkte": 2,
+    "schwierigkeit": "mittel",
+    "erklaerung": "len() zählt Unicode-Codepoints, nicht Bytes: héllo hat 5 Zeichen. Bytes wären 6 (é = 2 Bytes in UTF-8).",
+    "halluzination_kategorie": "zahlen-falle"
+  },
+  {
+    "id": "python_gen_02",
+    "typ": "mc",
+    "frage": "Welche Datenstruktur eignet sich am besten, um Häufigkeiten zu zählen?",
+    "optionen": ["collections.Counter", "set", "tuple", "deque"],
+    "antwort": 0,
+    "punkte": 1,
+    "schwierigkeit": "leicht",
+    "erklaerung": "Counter ist ein dict-Untertyp für Zählungen. set ist für Eindeutigkeit, tuple unveränderlich, deque für schnelle Enden.",
+    "halluzination_kategorie": "verwechslung"
+  },
+  {
+    "id": "python_gen_03",
+    "typ": "open",
+    "frage": "Was ist der Unterschied zwischen einer Liste und einem Tupel in Python?",
+    "antwort": "Eine Liste ist veränderlich (mutable): Elemente können hinzugefügt, entfernt und geändert werden. Ein Tupel ist unveränderlich (immutable) und dadurch hashbar (als Dict-Key nutzbar) und oft etwas speicherschonender. Syntax: [] vs. ().",
+    "punkte": 3,
+    "schwierigkeit": "mittel",
+    "erklaerung": "Mutable vs. immutable – Grundlagenwissen.",
+    "stichworte": ["veränderlich", "unveränderlich", "hashbar", "mutable"],
+    "halluzination_kategorie": "verwechslung"
+  }
+]

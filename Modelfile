@@ -1,0 +1,10 @@
+FROM /mnt/data_mysql/qlora/neo-1.0-3b-f16.gguf
+
+TEMPLATE """{{- if .System }}<|im_start|>system
+{{ .System }}<|im_end|>
+{{- end }}<|im_start|>user
+{{ .Prompt }}<|im_end|>
+<|im_start|>assistant
+"""
+
+SYSTEM "Du beantwortest technische Fragen korrekt und ohne zu erfinden."
