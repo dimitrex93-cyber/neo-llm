@@ -8,23 +8,42 @@
 
 > *„Neo" (griech. νέος = neu) — ein Modell, das aus dem Basismodell neu geboren wurde: Linux, Docker, Netzwerktechnik, Python/C++ und deutsche Grammatik.*
 
+> [!IMPORTANT]
+> **Immer mit System-Prompt benutzen.** Neo wurde mit dem System-Prompt
+> „Du beantwortest technische Fragen korrekt und ohne zu erfinden." trainiert. Wer nur
+> `ollama run hf.co/Dimitrex93/neo1.0-3b` aufruft, importiert das GGUF **ohne**
+> System-Prompt — im Generalisierungstest fällt das Modell dann von **74/104 (71 %)** auf
+> **56/104 (54 %)**. Reproduzierbar gemessen am 24.09.2026.
+>
+> ```bash
+> cat > Modelfile <<'EOF'
+> FROM hf.co/Dimitrex93/neo1.0-3b
+> SYSTEM "Du beantwortest technische Fragen korrekt und ohne zu erfinden."
+> EOF
+> ollama create neo1.0:3b -f Modelfile   # oder: -f Modelfile aus diesem Repo
+> ollama run neo1.0:3b
+> ```
+
 ## 🥊 Ergebnisse
 
 ### Benchmark (84 domänenspezifische Fragen)
 
 | Modell | Punkte |
 |---|---|
-| Qwen2.5-3B (Basis) | 92/168 (55 %) |
+| Qwen2.5-3B-Instruct (Basis) | 96/168 (57 %) |
 | **Neo 1.0:3b** | **104/168 (62 %)** |
 
 ### Generalisierungstest (50 unbekannte Fragen — nicht im Training)
 
 | Modell | Punkte |
 |---|---|
-| Qwen2.5-3B (Basis) | 57/104 (55 %) |
+| Qwen2.5-3B-Instruct (Basis) | 68/104 (65 %) |
 | **Neo 1.0:3b** | **74/104 (71 %)** |
 
-Stärkste Verbesserungen: **Linux +33 pp**, **C++ +29 pp**, **zahlen-falle +57 pp** (14 % → 71 %).
+Beide Modelle am 24.09.2026 nachgemessen: veröffentlichtes Q4_K_M, identischer
+System-Prompt, Temperatur 0, je ein Lauf. Vorsprung: +8 Punkte bzw. +6 Punkte.
+Die früheren Werte (Neo 104/168 und 74/104, Basis 92/168 und 57/104) stammen aus dem
+Erstlauf am 28.08.2026 unter anderen Bedingungen.
 
 ## 🧠 Training
 
@@ -77,12 +96,25 @@ python3 llm_test/evaluate_llm.py --model neo1.0:3b --ordner llm_test_gen/   # Ge
 - 84 Fragen (MC + offen) in 7 Themen · 6 Halluzinations-Kategorien (falsch-freund, zahlen-falle, verwechslung …)
 - 50 zusätzliche Generalisierungs-Fragen, die **nie** im Training waren
 - Nur Python-Standardbibliothek — kein Framework nötig
+- Die Fragenbank (134 Fragen, Apache-2.0) ist zusätzlich als Datensatz veröffentlicht:
+  **[Dimitrex93/neo1.0-benchmark](https://huggingface.co/datasets/Dimitrex93/neo1.0-benchmark)**
 
 ## 🚀 Modell laden
 
 ```bash
-ollama run hf.co/Dimitrex93/neo1.0-3b          # direkt von HuggingFace
+# mit System-Prompt (empfohlen, siehe Hinweis oben)
+cat > Modelfile.local <<'EOF'
+FROM hf.co/Dimitrex93/neo1.0-3b
+SYSTEM "Du beantwortest technische Fragen korrekt und ohne zu erfinden."
+EOF
+ollama create neo1.0:3b -f Modelfile.local && ollama run neo1.0:3b
+
+# oder direkt (ohne System-Prompt — messbar schwächer)
+ollama run hf.co/Dimitrex93/neo1.0-3b
 ```
+
+Beispiel-Ausgaben, auch eine ehrliche Halluzination, stehen auf der
+[HF-Modellkarte](https://huggingface.co/Dimitrex93/neo1.0-3b).
 
 ## 💬 Feedback → Neo 1.2
 
